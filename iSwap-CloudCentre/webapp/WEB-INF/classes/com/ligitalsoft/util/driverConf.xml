@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<prop name="driver">
-		<driver name="oracle" value="oracle.jdbc.driver.OracleDriver"/>
-		<driver name="mysql" value="com.mysql.jdbc.Driver"/>
-</prop>

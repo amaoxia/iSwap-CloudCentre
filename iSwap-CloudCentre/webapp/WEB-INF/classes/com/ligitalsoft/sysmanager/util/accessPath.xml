@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<passingUrl>
-	<url>loginView.action</url><!--  登录路径 -->
-	<url>toLogin.jsp</url><!--  到登录页面路径 -->
-	<url>login.ftl</url><!--  首页 -->
-</passingUrl>
