@@ -1,0 +1,6 @@
+div.wpageslide {position: relative; width: auto; overflow: hidden; background: #ccc;}
+div.wpageslide div.wpages {position: relative; list-style: none; margin: 0px; padding: 0px;}
+div.wpageslide div.wpages div.wpage {overflow: auto;} 
+div.wpageslide ul.wpagebtns {position: absolute; width: 400px; height: 20px; list-style: none;}
+div.wpageslide ul.wpagebtns li {float: left; width: 60px; height: 20px; text-align: center; cursor: pointer;}
+div.wpageslide ul.wpagebtns li.current {color: #f60;}

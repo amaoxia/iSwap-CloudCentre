@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Mapping>
+	<MapTable> 
+		<Link  from="c"  to="e" type="string" isbuild="" ispk="" value=""/>
+		<Link  from="c"  to="d" type="string" isbuild="" ispk="" value=""/>
+		<Link  from="c"  to="f" type="date" isbuild="" ispk="" value=""/>
+	</MapTable>
+	<NewTable>
+		<FiledInfo name="" type="" isbuild="" ispk="" value=""/>
+		<FiledInfo name="" type="" isbuild="" ispk="" value=""/>
+	</NewTable>
+	<DelTable>
+		<DelFiled name=""/>
+		<DelFiled name=""/>
+	</DelTable>
+</Mapping>

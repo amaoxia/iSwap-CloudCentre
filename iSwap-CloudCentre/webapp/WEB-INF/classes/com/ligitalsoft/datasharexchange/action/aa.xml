@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Mapping>
+	<MapTable>
+		<Link from="KPRQ" to="KPRQ" type="Date" isbuild="" ispk="true"
+			value="" />
+		<Link from="YPMC" to="YPMC" type="String" isbuild="" ispk="true"
+			value="" />
+		<Link from="SL" to="SL" type="String" isbuild="" ispk="true"
+			value="" />
+		<Link from="JJ" to="JJ" type="String" isbuild="" ispk="true"
+			value="" />
+		<Link from="JYDW" to="JYDW" type="String" isbuild="" ispk="true"
+			value="" />
+	</MapTable>
+</Mapping>

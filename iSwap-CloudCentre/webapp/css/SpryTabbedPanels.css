@@ -1,0 +1,115 @@
+@charset "utf-8";
+body {
+	font-family:Microsoft YaHei;
+	font-size:12px;
+}
+.TabbedPanels {
+	overflow: hidden;
+	margin: 0px;
+	margin-top:4px;
+	padding: 1px 0px 0px 0px;
+	clear: none;
+	width: 98%;/* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/
+}
+.TabbedPanelsTabGroup {
+	margin: 0px;
+	padding: 0px;
+}
+.TabbedPanelsTab {
+	position: relative;
+	top: 1px;
+	float: left;
+	padding: 4px 40px;
+	margin: 0px -1px 0px 0px;
+	color:#FFF;
+	background:url(../images/tab_m.jpg) #143D67 bottom repeat-x;
+	list-style: none;
+	border-left: solid 1px #9A7E12;
+	border-top: solid 1px #9A7E12;
+	border-right: solid 1px #9A7E12;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	cursor: pointer;
+}
+.TabbedPanelsTabHover {
+	border:1px solid #143D67;
+	border-bottom:none;
+	color:#000;
+	background:url(../images/tab_m_h.jpg) #FEFAC5 top repeat-x;
+}
+.TabbedPanelsTabSelected {
+	border:1px solid #143D67;
+	border-bottom:none;
+	color:#000;
+	background:url(../images/tab_m_h.jpg) #FEFAC5 top repeat-x;
+}
+.TabbedPanelsTab a {
+	color: #602700;
+	text-decoration: none;
+}
+.TabbedPanelsContentGroup {
+	clear: both;
+	border:1px solid #7D9DC6;
+	border-top:1px solid #5A2E00;
+	background:url(../images/tab_m_bg.jpg) #fff top repeat-x;
+}
+.TabbedPanelsContent {
+	overflow: hidden;
+	padding: 4px;
+}
+.TabbedPanelsContentVisible {
+}
+.VTabbedPanels {
+	overflow: hidden;
+	zoom: 1;
+}
+.VTabbedPanels .TabbedPanelsTabGroup {
+	float: left;
+	width: 10em;
+	height: 20em;
+	background-color: #EEE;
+	position: relative;
+	border-top: solid 1px #999;
+	border-right: solid 1px #999;
+	border-left: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+}
+.VTabbedPanels .TabbedPanelsTab {
+	float: none;
+	margin: 0px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.VTabbedPanels .TabbedPanelsTabSelected {
+	background-color: #EEE;
+	border-bottom: solid 1px #999;
+}
+.VTabbedPanels .TabbedPanelsContentGroup {
+	clear: none;
+	float: left;
+	padding: 0px;
+	width: 30em;
+	height: 20em;
+}
+
+/* Styles for Printing */
+@media print {
+.TabbedPanels {
+	overflow: visible !important;
+}
+.TabbedPanelsContentGroup {
+	display: block !important;
+	overflow: visible !important;
+	height: auto !important;
+}
+.TabbedPanelsContent {
+	overflow: visible !important;
+	display: block !important;
+	clear:both !important;
+}
+.TabbedPanelsTab {
+	overflow: visible !important;
+	display: block !important;
+	clear:both !important;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?> 
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="ehcache.xsd"
+        updateCheck="true" monitoring="autodetect"
+        dynamicConfig="true">
+   <diskStore path="/datatemp"/>
+    <defaultCache
+           maxElementsInMemory="0"  
+           eternal="false" 
+           overflowToDisk="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200">
+    </defaultCache>
+        
+    <!-- 设置默认的查询缓存的数据过期策略 -->
+    <cache name="org.hibernate.cache.StandardQueryCache" 
+       maxElementsInMemory="1000"
+       eternal="false"    
+       timeToIdleSeconds="3600" 
+       timeToLiveSeconds="7200"
+       overflowToDisk="true"/>
+       
+       
+    <!-- 设置时间戳缓存的数据过期策略 -->
+    <cache name="org.hibernate.cache.UpdateTimestampsCache" 
+       maxElementsInMemory="1000"
+       eternal="false" 
+       timeToIdleSeconds="3600" 
+       timeToLiveSeconds="7200"
+       overflowToDisk="true"/>
+    
+     <!-- 用于加载workflow的实例 -->
+     <cache name="esbWorkfolwCache"  
+            maxElementsInMemory="1000"
+            eternal="true"
+            overflowToDisk="true"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+    
+</ehcache>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<menu1 tag="1" name="交换指标项" default="y">
+		<menu2 tag="1_1" name="上报数据指标项"
+			url="cloudcenter/cloudNodeInfo/cloudNodeInfo!list.action" default="y" />
+		<menu2 tag="1_2" name="共享数据指标项"
+			url="cloudcenter/cloudNodeInfo/cloudNodeInfo!nodeStatusMonitor.action"
+			default="y" />
+		<menu2 tag="1_3" name="接受数据指标项"/>
+	</menu1>
+	<menu1 tag="2" name="前置机管理" default="y">
+		<menu2 tag="2_1" name="前置机1" default="y">
+			<menu3 tag="2_1_1" name="桥接管理"
+				url="cloudnode/datasource/datasource!list.action" default="y" />
+			<menu3 tag="2_1_2" name="流程管理"
+				url="cloudnode/ftplisten/ftplisten!list.action" >
+				<menu4 tag="2_1_2_1" name="流程定制"
+				url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+				<menu4 tag="2_1_2_2" name="任务定制"
+					url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+			</menu3>
+			<menu3 tag="2_1_3" name="运行管理"
+				url="cloudnode/localhostlisten/localhostlisten!list.action" />
+		</menu2>
+		<menu2 tag="2_2" name="前置机2" default="y">
+			<menu3 tag="2_2_1" name="桥接管理"
+				url="cloudnode/datasource/datasource!list.action" default="y" />
+			<menu3 tag="2_2_2" name="流程管理"
+				url="cloudnode/ftplisten/ftplisten!list.action" >
+				<menu4 tag="2_2_2_1" name="流程定制"
+				url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+				<menu4 tag="2_2_2_2" name="任务定制"
+					url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+			</menu3>
+			<menu3 tag="2_2_3" name="运行管理"
+				url="cloudnode/localhostlisten/localhostlisten!list.action" />
+		</menu2>
+	</menu1>
+	<menu1 tag="3" name="中心控制管理" default="y">
+		<menu2 tag="3_1" name="前置机注册" url="exchange/share/share!main.action?type=6" default="y" />
+		<menu2 tag="3_2" name="应用注册" default="y"/>
+		<menu2 tag="3_3" name="传输管理" default="y"/>
+		<menu2 tag="3_4" name="流程管理" default="y">
+			<menu3 tag="3_4_1" name="流程定制"
+				url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+			<menu3 tag="3_4_2" name="任务定制"
+				url="cloudstorage/metadata/metadata!list.action?type=1" default="y" />
+		</menu2>
+		<menu2 tag="3_5" name="运行管理" default="y"/>
+	</menu1>
+	<menu1 tag="4" name="平台管理" default="y">
+		<menu2 tag="4_1" name="用户管理" url="sysmanager/user/user!list.action"
+			default="y" isleaf="y"/>
+		<menu2 tag="4_2" name="机构管理" url="sysmanager/dept/dept!main.action"
+			default="y" isleaf="y"/>
+		<menu2 tag="4_3" name="角色管理" url="sysmanager/role/role!list.action"
+			default="y" isleaf="y"/>
+		<menu2 tag="4_4" name="权限管理"
+			url="sysmanager/permission/permission!main.action" default="y" isleaf="y"/>
+	</menu1>
+</menu>

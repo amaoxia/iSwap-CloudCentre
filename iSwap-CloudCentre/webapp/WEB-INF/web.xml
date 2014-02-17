@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>iSwap V6.0 config</display-name>
+
+	<welcome-file-list>
+		<welcome-file>toLogin.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!--load spring config -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:config/spring/applicationContext*.xml
+		</param-value>
+	</context-param>
+	
+	<!-- Listener contextConfigLocation -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>
+			org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- Listener log4jConfigLocation -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!--system encoding start -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<!--system encoding end -->
+
+	<!-- hibernate openSession start 注意顺序 -->
+	<filter>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<filter-class>
+			com.common.framework.dao.hibernate.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>excludeSuffixs</param-name>
+			<param-value>css,jpg,gif,js</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<!-- hibernate openSession end -->
+
+	<!-- struts config start -->
+	<filter>
+		<filter-name>struts-execute</filter-name>
+		<filter-class>com.ligitalsoft.sysmanager.filter.LoginInStrutsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts-execute</filter-name>
+		<url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts-execute</filter-name>
+		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>struts2CleanupFilter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2CleanupFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>JspSupportServlet</servlet-name>
+		<servlet-class>org.apache.struts2.views.JspSupportServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!--struts config end -->
+
+	<!-- dwr配置 -->
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 初始化系统 -->
+	<servlet>
+		<servlet-name>initSystem</servlet-name>
+		<servlet-class>com.ligitalsoft.help.systemInit.DelegatingServletProxy</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<!-- CXF 配置 -->
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/webservice/*</url-pattern>
+	</servlet-mapping>
+
+   <!-- 流程定制工具Flex通讯加载 -->
+	<listener>
+		<listener-class>flex.messaging.HttpFlexSession</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>messageBroker</servlet-name>
+		<servlet-class>flex.messaging.MessageBrokerServlet</servlet-class>
+		<init-param>
+			<param-name>services.configuration.file</param-name>
+			<param-value>/WEB-INF/flex/services-config.xml</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>messageBroker</servlet-name>
+		<url-pattern>/messagebroker/*</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>core</taglib-uri>
+			<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>fmt</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>fn</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fn.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>pager</taglib-uri>
+			<taglib-location>/WEB-INF/tld/pager.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<!-- 出错页面定义 -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/common/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/common/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/common/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/common/403.jsp</location>
+	</error-page>
+</web-app>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<menu>
+
+	<menu1 tag="3" name="云中心管理" url="#">
+		<menu2 tag="3_1" name="云端节点管理" url="#" default="y">
+			<memu3 tag="3_1_1" name="云端节点管理" url="shawl/CenterManage/nodeManage.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="3_2" name="节点状态监控" url="#">
+			<memu3 tag="3_2_1" name="云端节点状态监控"
+				url="shawl/CenterManage/nodeStatusMonitor.html" default="y" />
+		</menu2>
+		<menu2 tag="3_3" name="数据共享云管理" url="#">
+			<memu3 tag="3_3_1" name="应用注册" url="shawl/CenterManage/dataShareApp.html"
+				default="y" />
+			<memu3 tag="3_3_2" name="云端节点定制"
+				url="shawl/CenterManage/nodeHandtailor.html" />
+			<memu3 tag="3_3_3" name="云存储空间定制"
+				url="shawl/CenterManage/saveSpaceHandtailor.html" />
+		</menu2>
+		<menu2 tag="3_4" name="iSwap ESB" url="#">
+			<memu3 tag="3_4_1" name="流程定制" url="wangs\iSwapESB\flow.html"
+				default="y" />
+			<memu3 tag="3_4_2" name="任务定制" url="wangs\iSwapESB\task.html" />
+		</menu2>
+	</menu1>
+
+	<!-- shawl 添加 开始 -->
+	< menu1 tag="2" name="云端节点管理" url="#" >
+	<menu2 tag="2_1" name="节点信息浏览" url="#" default="y">
+		<memu3 tag="2_1_1" name="节点信息浏览" url="shawl/NodeManage/nodeInfoView.html"
+			default="y" />
+	</menu2>
+	<menu2 tag="2_2" name="云端桥接管理" url="#">
+		<memu3 tag="2_2_1" name="数据源注册"
+			url="shawl/NodeManage/datasource_register.html" default="y" />
+		<memu3 tag="2_2_2" name="远程目录监听"
+			url="shawl/NodeManage/remoteFolderListener.html" />
+		<memu3 tag="2_2_3" name="本地目录监听"
+			url="shawl/NodeManage/localFolderListener.html" />
+		<memu3 tag="2_2_4" name="消息监听" url="shawl/NodeManage/messageListener.html" />
+	</menu2>
+	<menu2 tag="2_3" name="云端Mapping管理" url="#">
+		<memu3 tag="2_3_1" name="Mapping管理" url="shawl/NodeManage/mapping.html"
+			default="y" />
+	</menu2>
+	<menu2 tag="2_4" name="云端流程管理" url="#">
+		<memu3 tag="2_4_1" name="流程管理" url="shawl/NodeManage/flowManage.html"
+			default="y" />
+	</menu2>
+</menu1>
+	<menu1 tag="5" name="文档数据管理" url="lurt/wdsj_main.html">
+		<menu2 tag="5_1" name="文档上传" url="lurt/wdsj_main.html" default="y">
+			<menu3 tag="5_1_1" name="文档上传管理" url="lurt/wdsj_main.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="5_2" name="指标项模板" url="lurt/wdsj_zbmb_main.html">
+			<menu3 tag="5_2_1" name="指标项模板管理" url="lurt/wdsj_zbmb_main.html"
+				default="y" />
+		</menu2>
+	</menu1>
+	<menu1 tag="8" name="数据交换管理" url="#">
+		<menu2 tag="8_1" name="指标项登记" url="fb\sjjh\zbxdj\targetRegister_main.html">
+			<memu3 tag="8_1_1" name="指标项登记"
+				url="fb\sjjh\zbxdj\targetRegister_main.html" default="y" />
+		</menu2>
+		<menu2 tag="8_2" name="数据使用申请"
+			url="fb\sjjh\sjjhshengqing\sjjhshengqing_main_tabs.html">
+			<memu3 tag="8_2_1" name="数据使用申请"
+				url="fb\sjjh\sjjhshengqing\sjjhshengqing_main_tabs.html" default="y" />
+		</menu2>
+		<menu2 tag="8_3" name="数据使用授权"
+			url="fb\sjjh\sjjhshouqquan\sjjhshouqquan_main_tabs.html">
+			<memu3 tag="8_3_1" name="数据使用授权"
+				url="fb\sjjh\sjjhshouqquan\sjjhshouqquan_main_tabs.html" default="y" />
+		</menu2>
+		<menu2 tag="8_4" name="数据发送管理" url="fb\sjjh\sjfsgl\sjjc_main2.html"
+			default="y">
+			<memu3 tag="8_4_1" name="数据发送管理" url="fb\sjjh\sjfsgl\sjjc_main2.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="8_5" name="数据接收管理" url="fb\sjjh\sjjsgl\sjjsgl_main.html">
+			<memu3 tag="8_5_1" name="数据接收管理" url="fb\sjjh\sjjsgl\sjjsgl_main.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="8_6" name="催办管理" url="fb\sjjh\cbgl\cuiban_main.html">
+			<memu3 tag="8_6_1" name="催办管理" url="fb\sjjh\cbgl\cuiban_main.html"
+				default="y" />
+		</menu2>
+	</menu1>
+	<menu1 tag="9" name="数据共享管理" url="#">
+		<menu2 tag="9_1" name="数据查询" url="fb/sjgx/sjcx/sjcx_main_tabs.html"
+			default="y">
+			<memu3 tag="9_1_1" name="数据查询" url="fb/sjgx/sjcx/sjcx_main_tabs.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="9_2" name="数据共享发布" url="fb\sjgx\sjgxfb\sjgxfb_main_tabs.html">
+			<memu3 tag="9_2_1" name="数据共享发布" url="fb\sjgx\sjgxfb\sjgxfb_main_tabs.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="9_3" name="数据查看授权" url="fb\sjgx\sjcksq\sjcksq_main_tabs.html">
+			<memu3 tag="9_3_1" name="数据查看授权" url="fb\sjgx\sjcksq\sjcksq_main_tabs.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="9_4" name="数据查看申请"
+			url="fb\sjgx\sjckshengqing\sjckshengqing_main_tabs.html">
+			<memu3 tag="9_4_1" name="数据查看申请"
+				url="fb\sjgx\sjckshengqing\sjckshengqing_main_tabs.html" default="y" />
+		</menu2>
+		<menu2 tag="9_5" name="文档数据共享发布" url="fb/sjgx/wdgxfb.html">
+			<memu3 tag="9_5_1" name="文档数据共享发布" url="fb/sjgx/wdgxfb.html"
+				default="y" />
+		</menu2>
+	</menu1>
+	<menu1 tag="7" name="数据审计" url="#">
+		<menu2 tag="7_1" name="审计规则管理" url="#" default="y">
+			<memu3 tag="7_1_1" name="审计规则库" url="wangs\DQC\rules.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="7_2" name="审计结果管理" url="#">
+			<memu3 tag="7_2_1" name="未审计通过" url="wangs\DQC\audit_miss.html"
+				default="y" />
+			<memu3 tag="7_2_2" name="已审计通过" url="wangs\DQC\audit_past.html" />
+		</menu2>
+		<menu2 tag="7_3" name="人工审计" url="#">
+			<memu3 tag="7_3_2" name="人工审计" url="wangs\DQC\sjcx_main_tabs.html"
+				default="y" />
+		</menu2>
+	</menu1>
+	<menu1 tag="6" name="数据交换运行跟踪" url="#">
+		<menu2 tag="6_1" name="文档交换运行跟踪" url="fb\sjjhyxgz\ydjd_jhyxgz.html">
+			<memu3 tag="6_1_1" name="文档交换运行跟踪" url="fb\sjjhyxgz\ydjd_wdjhyxgz.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="6_2" name="云端节点交换运行跟踪" url="fb\sjjhyxgz\ydjd_jhyxgz.html"
+			default="y">
+			<memu3 tag="6_2_1" name="云端节点交换运行跟踪" url="fb\sjjhyxgz\ydjd_jhyxgz.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="6_3" name="iSwapFTP运行跟踪" url="fb\sjjhyxgz\ydjd_jhyxgz.html">
+			<memu3 tag="6_3_1" name="iSwapFTP运行跟踪" url="fb\sjjhyxgz\ydjd_ftp.html"
+				default="y" />
+		</menu2>
+		<menu2 tag="6_4" name="iSwapESB运行跟踪" url="fb\sjjhyxgz\ydjd_jhyxgz.html">
+			<memu3 tag="6_4_1" name="iSwapESB运行跟踪" url="fb\sjjhyxgz\ydjd_esb.html"
+				default="y" />
+		</menu2>
+	</menu1>
+
+	<menu1 tag="10" name="数据传输管理" url="" default="y">
+		<menu2 tag="10_1" name="iSwapFTP服务" url="">
+			<menu3 tag="10_1_1" name="FTP服务设置" url="ftp/ftpClient/ftpClient!list.action"
+				default="y">
+				<memu4 tag="10_1_1_1" name="常规设置"
+					url="ftp/ftpClient/ftpClient!list.action" default="y" />
+			</menu3>
+			<menu3 tag="10_1_2" name="客户端管理" url="lurt/ftp_10_2_1.html">
+				<memu4 tag="10_1_2_1" name="账号管理"
+					url="ftp/ftpClient/ftpClient!ftpUserManager.action" default="y" />
+				<memu4 tag="10_1_2_2" name="常规设置"
+					url="ftp/ftpClient/ftpClient!routineSet.action" />
+				<memu4 tag="10_1_2_3" name="目录管理" url="lurt/ftp_10_2_3.html" />
+				<memu4 tag="10_1_2_4" name="规则设置"
+					url="ftp/ftpClient/ftpClient!ftpAccessRuleSet.action" />
+				<memu4 tag="10_1_2_5" name="上传下载管理"
+					url="ftp/ftpClient/ftpClient!transmissionLimitSet.action" />
+				<memu4 tag="10_1_2_6" name="配额管理"
+					url="ftp/ftpClient/ftpClient!diskQuotaSet.action" />
+			</menu3>
+			<menu3 tag="10_1_3" name="活动日志" url="lurt/ftp_10_3_1.html">
+				<memu4 tag="10_1_3_1" name="客户端日志" url="lurt/ftp_10_3_1.html"
+					default="y" />
+				<memu4 tag="10_1_3_2" name="系统日志" url="#" />
+			</menu3>
+		</menu2>
+
+		<menu2 tag="10_2" name="iSwapMQ服务" url="iSwapMQ/local/queueInfo!list.action"
+			default="y">
+			<memu3 tag="10_2_1" name="消息队列管理" url="iSwapMQ/local/queueInfo!list.action"
+				default="y" />
+		</menu2>
+		<menu2 tag="10_3" name="接入服务管理" url="#">
+			<memu3 tag="10_3_1" name="WebServices接入"
+				url="iSwapMQ/external/extServiceInfo!list.action?serviceType=0"
+				default="y" />
+			<memu3 tag="10_3_2" name="MQ服务接入"
+				url="iSwapMQ/external/extServiceInfo!list.action?serviceType=1" />
+			<memu3 tag="10_3_3" name="FTP服务接入"
+				url="iSwapMQ/external/extServiceInfo!list.action?serviceType=2" />
+		</menu2>
+
+
+	</menu1>
+
+
+	<!-- 原来绩效是11，以后要改回 -->
+	<menu1 tag="1" name="绩效考核" url="performancemanage/check/check!list.action"
+		default="y">
+		<menu2 tag="1_1" name="考核管理" url="#" default="y">
+			<memu3 tag="1_1_1" name="在线考核"
+				url="performancemanage/check/check!list.action" default="y" />
+			<memu3 tag="1_1_2" name="考核查询"
+				url="performancemanage/check/check!checkSelect.action" />
+		</menu2>
+		<menu2 tag="1_2" name="考核通报" url="#">
+			<memu3 tag="1_2_1" name="考核通报"
+				url="performancemanage/checkreport/checkmgr!list.action" default="y" />
+			<memu3 tag="1_2_2" name="排名通报"
+				url="performancemanage/checkreport/checkmgr!pmlist.action" />
+		</menu2>
+		<menu2 tag="1_3" name="考核配置" url="#">
+			<memu3 tag="1_3_1" name="考核模板"
+				url="performancemanage/model/modelmg!list.action" default="y" />
+			<memu3 tag="1_3_2" name="考核指标"
+				url="performancemanage/checktarget/checkTarget!checkTargetTree.action" />
+		</menu2>
+	</menu1>
+
+	<!-- menu1 tag="1" name="云存储管理" url="#" > <menu2 tag="1_1" name="元数据管理" 
+		url="#" default="y"> <memu3 tag="1_1_1" name="原始库管理" url="wangs\CloudSave\original.html" 
+		default="y" /> <memu3 tag="1_1_2" name="基础库管理" url="wangs\CloudSave\base.html" 
+		/> <memu3 tag="1_1_3" name="主题库管理" url="wangs\CloudSave\theme.html" /> <memu3 
+		tag="1_1_4" name="专题库管理" url="wangs\CloudSave\subject.html" /> </menu2> <menu2 
+		tag="1_2" name="云存储中心配置" url="#"> <memu3 tag="1_2_1" name="云存储中心配置" url="wangs\CloudSave\yconfig.html" 
+		default="y" /> </menu2> <menu2 tag="1_3" name="云存储节点配置" url="#"> <memu3 tag="1_3_1" 
+		name="云存储节点配置" url="wangs\CloudSave\yNode.html" default="y" /> </menu2> </menu1> 
+		<menu1 tag="4" name="平台管理" url="#" > <menu2 tag="4_1" name="用户管理" url="#" 
+		default="y"> <memu3 tag="4_1_1" name="用户管理" url="wangs\sysconfig\user_main.html" 
+		default="y" /> </menu2> <menu2 tag="4_2" name="机构管理" url="#"> <memu3 tag="4_2_1" 
+		name="机构管理" url="wangs\sysconfig\jggl_main.html" default="y" /> </menu2> 
+		<menu2 tag="4_3" name="角色管理" url="#"> <memu3 tag="4_3_1" name="角色管理" url="wangs\sysconfig\role_main.html" 
+		default="y" /> </menu2> <menu2 tag="4_4" name="权限管理" url="#"> <memu3 tag="4_4_1" 
+		name="权限管理" url="wangs\sysconfig\permission.html" default="y" /> </menu2> 
+		<menu2 tag="4_5" name="邮件设置" url="#"> <memu3 tag="4_5_1" name="邮件设置" url="wangs\sysconfig\mail.html" 
+		default="y" /> </menu2> <menu2 tag="4_6" name="系统操作日志" url="#"> <memu3 tag="4_6_1" 
+		name="系统操作日志" url="wangs\sysconfig\operate_log.html" default="y" /> </menu2> 
+		<menu2 tag="4_7" name="系统运行日志" url="#"> <memu3 tag="4_7_1" name="平台运行日志" 
+		url="wangs\sysconfig\platform_log.html" default="y" /> <memu3 tag="4_7_2" 
+		name="ESB日志" url="wangs\sysconfig\esb_log.html" /> <memu3 tag="4_7_3" name="MQ日志" 
+		url="wangs\sysconfig\mq_log.html" /> <memu3 tag="4_7_4" name="云存储日志" url="wangs\sysconfig\node_log.html" 
+		/> <memu3 tag="4_7_5" name="云端节点日志" url="wangs\sysconfig\noderun_log.html" 
+		/> <memu3 tag="4_7_6" name="FTP日志" url="wangs\sysconfig\ftp_log.html" /> 
+		</menu2> </menu1 -->
+
+</menu>

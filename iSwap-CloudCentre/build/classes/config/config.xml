@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="gbk" standalone="yes"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="configuration.xsd">
+	<prop value="../lib" key="jarpath"/>
+	<!-- 临时目录 -->
+	<prop value="../webapps/iswaphome/temp" key="temp"/>
+	<!--绩效考核 系统报告 -->
+	<prop value="../webapps/iswaphome/sysReport" key="sysReport"/>
+	<!-- 绩效考核 人工上传报告 -->
+	<prop value="../webapps/iswaphome/finallyReport" key="finallyReport"/>
+	<!--  部门LOGO -->
+	<prop value="../webapps/iswaphome/deptLogo" key="deptLogo"/>
+	<!-- 指标模板 -->
+	<prop value="../webapps/iswaphome/itemTemplate" key="itemTemplate"/>
+<!-- 	 上传文档数据目录 -->
+	<prop value="../webapps/iswaphome/itemDocument" key="itemDocument"/>
+	<!--  交换文档成功目录 -->
+	<prop value="../webapps/iswaphome/exchangeSuccDocument" key="exchangeSuccDocument"/>
+	<!--  文档共享区目录 -->
+	<prop value="../webapps/iswaphome/shareDocument" key="shareDocument"/>
+	<!--  单点登陆WS服务地址 -->
+	<prop value="http://192.168.100.39:8080/fusionids/service/IFusionIDSWebService" key="webService_url"/>
+	
+	<prop value="../lib" key="jarpath"/>
+	<!-- FPT输出目录 -->
+	<prop value="/err" key="ftpPutpath"/>
+	<dictionary>
+		<category chName="MongoDBServer配置文件" enName="MongoDB">
+			<entry code="192.168.66.129"  name="20000"   def="" />
+		</category>
+	</dictionary>  
+	</configuration>

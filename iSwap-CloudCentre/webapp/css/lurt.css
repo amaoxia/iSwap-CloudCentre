@@ -1,0 +1,22 @@
+/* CSS Document */
+
+.lurt_div_body{
+	margin:10px 0px 20px 30px;
+}
+
+.lurt_note {
+	color:#999999;
+}
+
+.lurt_form{
+	margin:0px;
+	padding:0px;
+}
+
+.item2_bg {
+	background:url(../images/pop_item_bg.jpg) #E2F2F4 top repeat-x;
+	padding:2px 5px;
+}
+.item1_lu li {
+	padding:2px 0px 2px 30px;
+}

@@ -1,0 +1,16 @@
+/* CSS Document */
+body{font-size:12px;font-famliy:"宋体";}
+.header{ background:url(../images/head_02.jpg) repeat-x;height:68px; overflow:hidden; position:relative;}
+	.logo{ background:url(../images/head_01.jpg) no-repeat;width:416px;height:68px;}
+	
+	/*---------主菜单----------*/
+	.main_nav { position:absolute; right:5px; bottom:0; }
+	.main_nav ul { float:right;}
+	.main_nav ul li { float:left; height:30px; display:inline-block; background:url(../images/iSwapV6.0.png) no-repeat;line-height:30px; color:#fff;width:109px;margin-left:-10px; text-align:center; cursor:pointer;position:relative; z-index:1;}
+	.main_nav ul li.curr{ background:url(../images/tab09h.png) no-repeat; color:#341200;position:relative;z-index:2;}
+	
+	/*---------顶部信息----------*/
+	.top_btn {height:15px;position:absolute;top:0;right:5px; color:#fff;}
+	.topBtn{ background-color:#0966AB;width:58px;height:16px; color:#A6DAFF; display:inline-block; text-align:center; line-height:16px;}
+	
+.footer{ background:url(../images/footbg.jpg) repeat-x left bottom !important; height:25px;width:100%;line-height:25px;}

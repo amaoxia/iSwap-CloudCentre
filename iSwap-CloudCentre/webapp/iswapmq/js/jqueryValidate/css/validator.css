@@ -1,0 +1,5 @@
+.onShow{background:url(../images/reg1.gif) no-repeat; padding-left:25px; height:20px; line-height:20px; }
+.onFocus{background: url(../images/reg2.gif) no-repeat; padding-left:25px; height:20px; line-height:20px;}
+.onError{background: url(../images/reg3.gif) no-repeat; padding-left:25px; height:20px; line-height:20px;}
+.onSuccess{background: url(../images/reg4.gif) no-repeat; padding-left:25px; height:20px; line-height:20px;}
+.onLoad{background: url(../images/loading.gif) no-repeat 3px 3px; padding-left:25px; height:20px; line-height:20px;} 

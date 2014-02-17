@@ -1,0 +1,992 @@
+@charset "utf-8";
+
+@import url(base.css);
+.pop_01 {
+	margin:0 auto;
+	text-align:center;
+}
+.pop_top {
+	width:100%;
+	background: url(../images/pop_01.png) left bottom no-repeat;
+	display:block;
+	height:41px;
+	clear:both;
+}
+.p01_tilte {
+	background: url(../images/pop_01.png) left bottom no-repeat;
+	display:block;
+	height:41px;
+	text-align:left;
+	line-height:41px;
+	float:left;
+	margin:0 100px 0 0;
+}
+.p01_tilte b {
+	margin:8px 0 0 30px;
+	color:#FFF;
+	font-size:14px;
+}
+.p01_tilte b.p01_tilte_font {
+	font-size:12px;
+}
+.p_close {
+	background:url(../images/pop_02.png) right bottom no-repeat;
+	display:inline-block;
+	width:100px;
+	height:41px;
+	float:right;
+}
+.p_close_bug {
+	position:relative;
+	top:-41px;
+	margin-bottom:-41px;
+}
+*+html .p_close_bug {
+	top:0px;
+	margin-bottom:0px;
+}
+.p_close img {
+	margin-top:7px;
+	margin-right:20px;
+	float:right;
+}
+.pop_mian table {
+	width:100%;
+}
+.pm_left {
+	background:url(../images/pop_03.png) repeat-y left bottom;
+	width:7px;
+	float:left;
+	display:block;
+	height:100%;
+}
+.pm_right {
+	background:url(../images/pop_05.png) repeat-y right bottom;
+	width:7px;
+	display:block;
+	float:right;
+	height:100%;
+}
+.pm_bottom {
+	background:url(../images/pop_06.png) repeat-x bottom;
+	height:7px;
+	width:100%;
+	display:block;
+}
+.pm01_c {
+	background:url(../images/pop_04.png) #FFF right bottom no-repeat;
+	margin:0 auto;
+	display:block;
+	vertical-align:middle;
+	padding:5px 0;
+	text-align:center;
+}
+*+html .pm01_c {
+	width:auto;
+}
+.pm02_c {
+	background:url(../images/pop_04.png) #FFF right bottom no-repeat;
+	margin:0 auto;
+	display:block;
+	vertical-align:middle;
+	padding:0;
+	text-align:center;
+}
+*+html .pm02_c {
+	width:auto;
+}
+.btn_s_m {
+	margin:25px auto 0px auto;
+}
+.btn_s_m2 {
+	margin:10px auto;
+}
+.item1 {
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.item1_c li {
+	padding:2px 40px;
+	display:block;
+	overflow:hidden;
+	height:auto;
+	clear:both;
+}
+*+html .item1_c li {
+	padding:1px 40px;
+}
+.item1_c li p {
+	text-align: left;
+	font-size:13px;
+	color:#000;
+}
+/*************������ʽ***************************/
+.item1_c li p b{
+	color:#F00;
+	padding-right:2px;
+	font-weight:normal;
+}
+
+.item1_c li span {
+	float:left;
+	text-align:left;
+	padding:1px 0;
+	font-size:12px;
+	color:#013766!important;
+}
+.item3 {
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.item3_c li {
+	padding:2px 40px;
+	display:block;
+	overflow:hidden;
+	height:auto;
+	clear:both;
+}
+*+html .item3_c li {
+	padding:1px 10px;
+}
+.item3_c li p {
+	text-align: left;
+	font-size:12px;
+	color:#000;
+}
+.item3_c li span {
+	float:left;
+	text-align:left;
+	padding:1px 0;
+	font-size:12px;
+	color:#013766!important;
+}
+.item_ts {
+	position:relative;
+	float:left;
+	margin-left:10px;
+	color:#6F6F6F;
+	font-size:11px;
+	top:4px;
+}
+.item_bg {
+	background:url(../images/pop_item_bg.jpg) #E2F2F4 top repeat-x;
+}
+.r_item {
+	margin:0 auto;
+	text-align:center;
+	position:relative;
+	left:30px;
+	top:15px;
+	margin-right:-40px;
+	clear:both;
+}
+a.r01 {
+	background:url(../images/r01.png) no-repeat;
+	width:192px;
+	height:47px;
+	line-height:47px;
+	display:block;
+	text-align:center;
+	font-size:14px;
+}
+a.r01:hover {
+	background:url(../images/r01_h.png) no-repeat;
+}
+a.r02 {
+	background:url(../images/r02.png) no-repeat;
+	width:192px;
+	height:47px;
+	line-height:47px;
+	display:block;
+	text-align:center;
+	font-size:14px;
+	position:relative;
+	left:-30px;
+	z-index:2;
+}
+a.r02:hover {
+	background:url(../images/r02_h.png) no-repeat;
+}
+a.r03 {
+	background:url(../images/r03.png) no-repeat;
+	width:192px;
+	height:47px;
+	line-height:47px;
+	display:block;
+	text-align:center;
+	font-size:14px;
+	position:relative;
+	left:-60px;
+	z-index:3;
+}
+a.r03:hover {
+	background:url(../images/r03_h.png) no-repeat;
+}
+a.r04 {
+	background:url(../images/r04.png) no-repeat;
+	width:192px;
+	height:47px;
+	line-height:47px;
+	display:block;
+	text-align:center;
+	font-size:14px;
+	position:relative;
+	left:-90px;
+	z-index:4;
+	clear:both;
+}
+a.r04:hover {
+	background:url(../images/r04_h.png) no-repeat;
+}
+.r_cont1 {
+	position:relative;
+	margin:70px auto 60px auto;
+	text-align:center;
+	clear:both;
+}
+.r_cont2 {
+	position:relative;
+	margin:70px auto 10px auto;
+	text-align:center;
+	clear:both;
+}
+.r_ts {
+	background: url(../images/pop_09.jpg) #FFF3AF top repeat-x;
+	border:1px solid #FF2B2A;
+	margin:0 auto;
+	text-align:center;
+	width:300px;
+	padding:5px 1px;
+	position:relative;
+}
+.r_ts p {
+	text-align:center;
+	padding:2px;
+}
+.r_ts p a {
+	text-decoration:underline;
+}
+/*************pop06***************************/
+/*edited by lurt { */
+.pop_div6 {
+	width:770px;
+}
+.i_align_left {
+	text-align:left !important;
+}
+/* } */
+.pm6_c {
+	background:url(../images/pop_04.png) #FFF right bottom no-repeat;
+	margin:0 auto;
+}
+/*edited by lurt { */
+.left_tree6 {
+	background-color:#476AA3;
+	border:1px solid #B2C0DA;
+	padding:4px;
+	width:180px;
+	float:left;
+}
+
+.left_tree6 h1 {
+	height:31px;
+	text-align:center;
+	line-height:31px;
+	color:#004B85;
+	background:url(../images/tree_topbg.jpg) #ECF3F9 bottom repeat-x;
+}
+.left_tree6 span {
+	background:url(../images/tree_cbg.jpg) #FFF top repeat-x;
+	display:block;
+}
+.div6_mainc {
+	margin:0 0 0 190px;
+}
+/*edited by lurt { */
+.div7_mainc {
+	margin:2px 5px 0px 0px;
+}
+/* } */
+.div6_tabs5 table {
+	width:98%;
+	margin:0 auto;
+	text-align:center;
+}
+.tabs5 {
+	border-collapse:collapse;
+	border:1px solid #809DC7;
+	background-color:#D1E9ED;
+}
+.tabs5 th {
+	background:url(../images/tabs_th.jpg) #61B3E3 repeat-x bottom;
+	padding:5px 4px;
+	color:#FFF;
+	font-weight:normal;
+	text-align:center;
+	border:1px solid #fff;
+}
+.tabs5 td {
+	border:1px solid #fff;
+	padding:2px 4px;
+	text-align:center;
+}
+*+html .tabs5 td {
+	padding:0px 4px;
+}
+.tabs5 td a:hover {
+	text-decoration:underline;
+}
+.tabs5 th.tleft, .tabs5 td.tleft {
+	text-align:left;
+}
+.tabs5 th.tright, .tabs5 td.tright {
+	text-align:right;
+}
+.tabs5 td.trbg {
+	background:url(../images/tabs5_leftbg.jpg) top left no-repeat;
+	color:#FFF;
+}
+.tabs5 td b {
+	width:30px;
+	display:inline-block;
+}
+.tabs5 td input[type="text"] {
+	width:20px;
+	padding:0 4px;
+	font-size:12px;
+	text-align:center;
+}
+.tabs5 tr:hover {
+	background:url(../images/tabs_tr.jpg) #FDFAC5 top repeat-x;
+}
+.nobg {
+	background:#D1E9ED;
+}
+a.tabs5_cz {
+	background:url(../images/tabs_czbtn.jpg) #FFFFFF bottom repeat-x;
+	display:inline-block;
+	color:#545454;
+	text-align:center;
+	padding:1px 5px;
+	border:1px solid #B4B4B4;
+	margin:0 1px;
+	white-space:nowrap;
+}
+a.tabs5_cz:hover {
+	background:url(../images/tabs_czbtn_h.jpg) #FFFFFF bottom repeat-x;
+	text-decoration: none!important;
+}
+a.tabs5_cz img {
+	padding-right:2px;
+}
+/*edited by lurt { */
+.sb_margin {
+	margin:0px auto;
+	margin-left:9px;
+	margin-top:15px;
+	text-align:left;
+}
+.btn_position {
+	text-align:center;
+}
+/* } */
+.select_box {
+	background:url(../images/pop_div02.png) no-repeat;
+	width:150px;
+	height:85px;
+	float:left;
+	margin:0 6px;
+}
+.select_box h1 {
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	color:#FFF;
+	
+}
+.select_box p {
+	line-height:40px;
+	text-align:center;
+}
+
+/*--------------�б�0414dl----------------------------*/
+
+.itemr {
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.itemr_c li {
+	padding:2px 20px;
+	display:block;
+	overflow:hidden;
+	height:auto;
+	clear:both;
+}
+*+html .itemr_c li {
+	padding:1px 20px;
+}
+.itemr_c li p {
+	text-align: left;
+	font-size:13px;
+	color:#000;
+}
+.itemr_c li span {
+	float:left;
+	text-align:left;
+	padding:1px 0;
+	font-size:12px;
+	color:#013766!important;
+}
+.itemr_bg {
+	background:url(../images/pop_item_bg.jpg) #E2F2F4 top repeat-x;
+}
+.div6_tabsr table {
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+
+
+/*---��ޱ�������ʽpop08---*/
+#tags {
+	margin-left:10px;
+	HEIGHT: 28px;
+	float:left;
+}
+#tags li {
+	background:url(../images/tag_bg.gif) repeat-x;
+	border:solid 1px #9c7f0a;
+	border-bottom:0;
+	FLOAT: left;
+	MARGIN-RIGHT: 1px;
+	LIST-STYLE-TYPE: none;
+	HEIGHT: 28px
+}
+#tags li a {
+	PADDING-RIGHT: 15px;
+	PADDING-LEFT: 15px;
+	FLOAT: left;
+	COLOR:#FFF;
+	LINE-HEIGHT: 28px;
+	HEIGHT: 28px;
+	TEXT-DECORATION: none
+}
+#tags LI.selectTag {
+	BACKGROUND-POSITION:0 -28px;
+	HEIGHT: 28px;
+	border:solid 1px #9c7f0a;
+	border-bottom:0;
+}
+#tags LI.selectTag a {
+	COLOR: #000;
+	LINE-HEIGHT: 28px;
+	HEIGHT: 28px
+}
+#tagContent {
+	float:left;
+	background:url(../images/tab_m_bg.jpg) repeat-x top;
+	background-color:#FFF;
+	width:473px;
+	border:solid 1px #7e9ec7;
+	border-top:solid 1px #9c7f0a;
+	margin-top:1px;
+	margin-left:10px;
+	height:320px;
+	margin-bottom:10px;
+}
+.tagContent {
+	DISPLAY: none;
+}
+.selectTag {
+	DISPLAY: block
+}
+.tag_h {
+	height:320px;
+}
+.tag_bg {
+	background:url(../images/tag_title_bg.png) no-repeat;
+	width:480px;
+	margin:0 auto;
+	margin-top:10px;
+	height:21px;
+}
+.tag_L {
+	float:left;
+	padding-top:2px;
+	width:145px;
+	text-align:center;
+	color:#004B85;
+}
+.tag_R {
+	float:right;
+	margin-right:5px;
+	padding-top:3px;
+}
+.tag_nr {
+	background:url(../images/tag_bg02.gif) repeat-x top;
+	width:480px;
+	text-align:left;
+	padding:5px 0;
+	min-height:59px;
+	margin:0 auto;
+}
+.tag_nr_c {
+	margin:5px 10px;
+	color:#004B85;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.tag_nr span {
+	margin:4px 6px;
+	display:inline-block;
+	word-break:break-all;
+	word-warp:warp;
+}
+.list_nr {
+	margin-top:3px;
+}
+.list_nr td {
+	line-height:22px;
+}
+.list_nr2 {
+	border-collapse:collapse;
+}
+.list_nr2 td {
+	text-align:left;
+	color:#004B85;
+}
+.list_nr2 th {
+	text-align:right;
+	font-weight:normal;
+	padding:5px 10px 5px 0;
+	color:#004B85;
+}
+.tabs1_addlink {
+	background: url(../images/tabs_addbg.jpg) top left no-repeat;
+	width:40px;
+}
+.tabs1_addlink2 {
+	background: url(../images/tabs_addbg.jpg) bottom left no-repeat;
+}
+.tabs1_addlink a, .tabs1_addlink2 a {
+	display:inline-block;
+	margin:0 2px;
+}
+.pop_div7 {
+	width:500px;
+}
+.error {
+	margin:30px 0;
+}
+.error .error_c {
+	font-size:14px;
+	width:380px;
+	display: inline-block;
+	text-align:center;
+	padding:10px;
+}
+/*---С��ʾ����ʽtspage---*/
+.tspage_w {
+	max-width:300px;
+	margin:0 auto;
+	text-align:center;
+}
+.tspage span.bcor_l {
+	background:url(../images/tsp_lbg.png) no-repeat left bottom;
+	display: block;
+	padding:6px 0px 15px 10px;
+}
+.tspage span.bcor_l img {
+	padding-right:10px;
+}
+.tspage span.bcor_l b {
+	padding:10px;
+	padding-right:0;
+	color:#FFF;
+}
+.bcor_r {
+	background:url(../images/tsp_rbg.png) no-repeat right bottom;
+	padding-right:21px;
+	display: block;
+}
+
+/*---dl0617add---*/
+.tabc_l {
+	float:left;
+}
+.tabc_r {
+	float:left;
+	margin-left:5px;
+}
+.tabc_l_list {
+	background-color:#476AA3;
+	padding:4px;
+	padding-right:0;
+	width:140px;
+	float:left;
+}
+.tabc_l_list h1 {
+	height:31px;
+	text-align:center;
+	line-height:31px;
+	color:#004B85;
+	background:url(../images/tree_topbg.jpg) #ECF3F9 bottom repeat-x;
+}
+.tabc_l_list span {
+	background:url(../images/tree_cbg.jpg) #FFF top repeat-x;
+	display:block;
+}
+.tabc_l_list p {
+	height:280px;
+	line-height:20px;
+	text-align:left;
+	padding:0 4px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.arr_btn {
+	background-color:#476AA3;
+	display:block;
+	height:319px;
+	vertical-align:middle;
+}
+.arr_btn img {
+	margin-top:140px;
+}
+.tag_bg2 {
+	background:url(../images/tag_title_bg2.png) no-repeat;
+	width:510px;
+	margin:0 auto;
+	margin-top:0px;
+	height:21px;
+}
+.tag_nr2 {
+	background:url(../images/tag_bg02.gif) repeat-x top;
+	width:510px;
+	text-align:left;
+	padding:5px 0;
+	min-height:59px;
+	margin:0 auto;
+}
+.tag_R a {
+	color:#FFF;
+}
+.tag_ctitle {
+	width:91px;
+	height:24px;
+	line-height:24px;
+	display:block;
+	background:url(../images/tag_ctitle.png) no-repeat;
+	text-align:center;
+	margin:5px 10px -1px 10px;
+	position:relative;
+}
+.tag_br_c {
+	margin:0 10px 5px 10px;
+	color:#004B85;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border:1px solid #B5C6CA;
+	background-color:#FFF;
+	padding:4px;
+}
+.list_nr3 {
+	border-collapse:collapse;
+}
+.list_nr3 td {
+	text-align:left;
+	color:#004B85;
+}
+.list_nr3 th {
+	text-align:right;
+	font-weight:normal;
+	padding:4px 20px 4px 10px;
+	color:#004B85;
+}
+.list_nr3 tr:hover {
+	background:url(../images/tag_trhover.jpg) #DDEAF3 bottom repeat-x;
+}
+.list_nr3 tr .nobg {
+	background:none;
+}
+.list_nr4 {
+	border-collapse:collapse;
+}
+.list_nr4 td {
+	text-align:left;
+	color:#004B85;
+	padding:3px;
+}
+.pop_btn_certer {
+	height:40px;
+	line-height:50px;
+	text-align:center;
+	margin:0 auto;
+}
+.float_tboder {
+	border-top:1px solid #000;
+}
+.tag_bg3 {
+	background:url(../images/tag_title_bg3.png) no-repeat;
+	width:660px;
+	margin:0 auto;
+	margin-top:10px;
+	height:21px;
+}
+.tag_L3 {
+	float:left;
+	padding-top:2px;
+	width:203px;
+	text-align:center;
+	color:#004B85;
+}
+.tag_nr3 {
+	background:url(../images/tag_bg02.gif) repeat-x top;
+	width:660px;
+	text-align:left;
+	padding:5px 0;
+	min-height:59px;
+	margin:0 auto;
+}
+/*---dl0623add---*/
+.TabbedPanelsContent {
+	overflow: hidden;
+	padding:2px 9px 4px 8px;
+}
+.tag_cont {
+}
+.tag_tabs {
+	position:relative;
+	bottom:-4px;
+}
+*+html .tag_tabs {
+	bottom:-6px;
+}
+.tag_tabs ul {
+}
+.tag_tabs ul li {
+	background:url(../images/tag_tabl.png) no-repeat left bottom;
+	float:left;
+	display:inline-block;
+	margin-left:-1px;
+}
+.tag_tabs ul li b {
+	background:url(../images/tag_tabr.png) no-repeat right bottom;
+	line-height:24px;
+	display:inline-block;
+	cursor:pointer;
+	padding:0 20px 0 20px;
+	margin-left:5px;
+}
+.tag_tabs ul li.tag_tabs_select {
+	background:url(../images/tag_tabl.png) no-repeat left top;
+	float:left;
+	display:inline-block;
+	margin-left:-1px;
+}
+.tag_tabs ul li.tag_tabs_select b {
+	background:url(../images/tag_tabr.png) no-repeat right top;
+	line-height:24px;
+	display:inline-block;
+	cursor:pointer;
+	padding:0 20px 0 20px;
+	margin-left:5px;
+}
+.tag_tabs ul li.tag_tabs_select a {
+	color:#000;
+}
+.tag_tabs ul li.tag_arrl {
+	background:none;
+	margin:0;
+	margin-top:5px;
+	margin-right:1px;
+}
+.tag_tabs ul li.tag_arrr, .tag_tabs ul li.tag_add {
+	background:none;
+	margin:0;
+	margin-top:5px;
+}
+.tag_mainc {
+	border:1px solid #B5C7C9;
+	width:100%;
+}
+.tab1_title {
+	background:url(../images/tag_tbg.png) left no-repeat;
+	height:26px;
+	line-height:20px;
+	text-align:left;
+	margin-top:3px;
+}
+.tab1_title b {
+	width:100px;
+	text-align:center;
+	display: inline-block;
+}
+.tab1_title img {
+	float:right;
+	margin-top:2px;
+	margin-right:10px;
+}
+*+html .tab1_title img {
+	margin-top:-18px;
+}
+.tab1_cont {
+	padding:4px;
+}
+.tab1_cont_del {
+	margin-left:10px;
+}
+.list_nr4 {
+	border-collapse:collapse;
+	width:90%;
+	margin:0 auto;
+	text-align:center;
+}
+.list_nr4 td {
+	text-align:left;
+	color:#004B85;
+}
+.list_nr4 th {
+	text-align:left;
+	font-weight:normal;
+	padding:4px 0 4px 30px;
+	color:#004B85;
+}
+
+.float_margin {
+	margin:5px 0;
+}
+.float_main {
+	background:url(../images/float_fbg.gif) bottom repeat-x;
+	display:block;
+	padding:30px 10px;
+}
+.tag_h {
+	height:400px;
+	overflow-x:hidden!important;
+	overflow-y:auto!important;
+	position: relative;
+}
+.float_div {
+	position:absolute;
+	display:none;
+}
+.float_div_float1_pos {
+	left:477px;
+	top:219px;
+}
+.float_div_float2_pos {
+	left:476px;
+	top:48px;
+}
+.float_div2 {
+	width:572px;
+	position:absolute;
+	display:none;
+}
+.float_div2_pos {
+	left:100px;
+	top:80px;
+}
+.float_main2 {
+	background:url(../images/tag_p_bg.jpg) bottom repeat-x;
+	display:block;
+	padding:10px;
+}
+.float_div3 {
+	width:572px;
+	position:absolute;
+	display:none;
+}
+.float_div3_pos {
+	left:100px;
+	top:200px;
+}
+.float_main3 {
+	background:url(../images/tag_p_bg.jpg) bottom repeat-x;
+	display:block;
+	padding:10px;
+}
+.tag_bg4 {
+	background:url(../images/tag_title_bg4.png) no-repeat;
+	width:551px;
+	margin:0 auto;
+	margin-top:10px;
+	height:21px;
+}
+.tag_L4 {
+	float:left;
+	padding-top:2px;
+	width:145px;
+	text-align:center;
+	color:#004B85;
+}
+.tag_nr_c {
+	margin:5px 10px;
+	color:#004B85;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.tag_nr_c span {
+	margin:4px 6px;
+	display:inline-block;
+	word-break:break-all;
+	word-warp:warp;
+}
+.taglist {
+	background:url(../images/tag_p_tbg.jpg) #FFF top repeat-x;
+	border:1px solid #B5C6CA;
+	padding:5px;
+	width:92%;
+	margin:0 auto;
+	text-align:center;
+	display:none;
+}
+
+.tab1_subtitle {
+	width:98%;
+	height:20px;
+}
+
+.tab1_subtitle .subt_name {
+	width:93%;
+	height:23px;
+	background:#CCCCCC;
+	float:left;
+	line-height:23px;
+	text-align:left;
+	padding-left:5px;
+}
+
+.tab1_subtitle .subt_img {
+	width:auto;
+	height:auto;
+	line-height:23px;
+}
+
+/*---dl0711add---*/
+.item4 {
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.item4_c li {
+	padding:4px 30px;
+	display:block;
+	overflow:hidden;
+	height:auto;
+	clear:both;
+}
+.item4_c li h1 {
+	float:left;
+	text-align: right;
+	font-size:13px;
+	color:#000;
+	width:110px;
+	padding-right:25px;
+}
+.item4_c li p {
+	float:left;
+	text-align:left;
+	font-size:12px;
+	color:#013766!important;
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

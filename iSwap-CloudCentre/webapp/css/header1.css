@@ -1,0 +1,276 @@
+@charset "utf-8";
+ @import url(base.css);
+/*************headerʽ***************************/
+
+.header {
+	height: 77px;
+}
+.logo {
+	background: url(../images/logo.jpg) no-repeat;
+	width:103px;
+	height:77px;
+	display:inline-block;
+	float:left;
+	position:relative;
+	z-index:5;
+	cursor:pointer;
+}
+.arrow1 {
+	background:url(../images/arrow_right.png) no-repeat;
+	width:14px;
+	height:13px;
+	position:relative;
+	top:52px;
+	right:7px;
+	cursor:pointer;
+	display:block;
+	float:right;
+}
+.arrow3 {
+	background:url(../images/arrow_down.png) no-repeat;
+	width:14px;
+	height:13px;
+	position:relative;
+	top:51px;
+	right:42px;
+	cursor:pointer;
+	display:block;
+	float:right;
+}
+.logo_h {
+	position:absolute;
+	z-index:6;
+}
+*+html .logo_h {
+	left:6px;
+}
+.logo_img {
+	background: url(../images/logo_img.png) no-repeat;
+	width:138px;
+	height:81px;
+	display:block;
+	float:left;
+	position:relative;
+	cursor:pointer;
+	float:left;
+	clear:both;
+}
+.menu1_drop {
+	background:url(../images/menu1_bg.png) left bottom no-repeat;
+	width:138px;
+	height:auto;
+	clear:both;
+}
+.menu1_drop ul {
+}
+*+html .menu1_drop ul {
+	margin:0px auto 12px auto;
+}
+.menu1_drop ul li {
+	background:url(../images/menu_line.png) bottom center no-repeat;
+	padding:0px 3px 2px 3px;
+	text-align:center;
+	color:#FFF;
+	font-size:14px;
+	display:block;
+}
+.menu1_drop ul li a {
+	color:#FFF;
+	display:block;
+}
+.menu1_drop ul li a:hover {
+	background:url(../images/menu1_hbg.jpg) top left no-repeat;
+}
+.h_main {
+	margin:0 0 0 103px;
+}
+.h_top {
+	background:url(../images/header_bg.jpg) top left no-repeat;
+	height:41px;
+	line-height:41px;
+	display:block;
+}
+.h_title {
+	width:200px;
+	font-size:18px;
+	color:#FFF;
+	clear:both;
+}
+.t_main {
+	float:right;
+}
+.t_main {
+	float:right;
+}
+*+html .t_main {
+	float:left;
+	position:relative;
+	top:-40px;
+}
+.t_main .logo_s {
+	float:left;
+	width:164px;
+	margin-top:10px;
+	margin-right:10px;
+}
+/*换肤显示时,右侧图片logo
+*+html .t_main .logo_s {
+	float:right;
+	position:relative;
+	right:120px;
+}
+*/
+/*换肤显示时,右侧图片logo*/
+*+html .t_main .logo_s {
+	float:right;
+	position:relative;
+	right:40px;
+}
+.t_main .clothes {
+	float:left;
+	margin:0 3px;
+	margin-top:5px;
+}
+/*换肤显示样式
+*+html .t_main .clothes {
+	float:right;
+	position:relative;
+	right:-130px;
+
+}
+*/
+/*换肤不显示样式*/
+*+html .t_main .clothes {
+	float:right;
+	position:relative;
+	right:0px;
+}
+.t_main .clothes img {
+	padding:0 4px;
+}
+.t_main .close {
+	float:right;
+	position:relative;
+	top:0;
+}
+/*换肤显示时，关闭按钮样式
+*+html .t_main .close {
+	right:-245px;
+}
+*/
+
+/*换肤不显示时，关闭按钮样式*/
+*+html .t_main .close {
+	right:-180px;
+}
+.t_menu {
+	background:url(../images/menu3.jpg) repeat-x bottom;
+	height:36px;
+	line-height:36px;
+	display:block;
+}
+.menu2 li {
+	background: url(../images/menu2.jpg) left top no-repeat;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	color:#FFF;
+	font-size:14px;
+	display:inline-block;
+	position:relative;
+	float:left;
+}
+.menu2 li a {
+	color:#FFF;
+	padding:0 50px;
+	white-space:nowrap;
+}
+.arrow2 {
+	background:url(../images/arrow_right.png) no-repeat;
+	width:14px;
+	height:13px;
+	position: absolute;
+	top:12px;
+	right:7px;
+	cursor:pointer;
+	display:block;
+	float:right;
+}
+.menu2_drop {
+	background:url(../images/menu2_bg.png) left bottom no-repeat;
+	width:162px;
+	height:auto;
+	position:absolute;
+	margin-top:37px;
+	z-index:11;
+	clear:both;
+}
+*+html .menu2_drop {
+	clear: none;
+	margin-top:30px;
+	left:0px;
+}
+.menu2_drop ul {
+}
+*+html .menu2_drop ul {
+	margin:0px auto 10px auto;
+}
+.menu2_drop ul li {
+	background:url(../images/menu_line.png) bottom center no-repeat;
+	padding:1px 2px 2px 0px;
+	width:162px;
+	text-align:center!important;
+	color:#FFF;
+	font-size:14px;
+	display:block!important;
+	height: inherit;
+	line-height:  normal;
+}
+*+html .menu2_drop ul li {
+	height:25px;
+	line-height:25px;
+}
+.menu2_drop ul li a {
+	color:#FFF;
+	text-align:center!important;
+	padding:0 1px;
+	display:block;
+}
+.menu2_drop ul li a:hover {
+	background:url(../images/menu2_hbg.jpg) top center no-repeat;
+}
+.menu3 {
+	position:relative;
+	left:1px;
+}
+.menu3 li {
+	background:url(../images/menu3.jpg) repeat-x bottom;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	color:#000;
+	font-size:14px;
+	display:inline-block;
+	float:left;
+}
+.menu3 li a {
+	color:#000;
+	padding:0 50px;
+	white-space:nowrap;
+}
+.menu3 li a:hover, .menu3_select {
+	height:36px;
+	line-height:36px;
+	text-align:center;
+	color:#000;
+	font-size:14px;
+	display:inline-block;
+	float:left;
+	background: url(../images/menu3_s.jpg) center bottom no-repeat;
+}
+.menu3 li img {
+	margin-bottom:4px;
+}
+*+html .menu3 li img {
+	margin-bottom:0px;
+}

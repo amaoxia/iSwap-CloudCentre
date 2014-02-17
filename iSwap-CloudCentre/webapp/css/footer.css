@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+@import url(base.css);
+/*************footerÑùÊ½***************************/
+.foot {
+	height: 35px;
+}
+.footer {
+	background:url(../images/footer_bg.jpg) no-repeat center bottom;
+	height:35px;
+	line-height:35px;
+}
+#footL {
+	margin-left:15px;
+}
+#footL span {
+	color:#FFF;
+	font-size:11px;
+}
+#footR {
+	position:absolute;
+	bottom:7px;
+	_bottom:15px;
+	right:10px;
+}
+#footR span {
+	display:block;
+	float:left;
+}
+#footR span a {
+	display:block;
+	color:#FFF;
+	text-decoration:none;
+	width:23px;
+	height:21px;
+	margin:0 2px;
+}
+#footR span a:hover {
+	background:url(../images/f_img_h.png) no-repeat;
+}
+#footR .gy {
+	margin-top:-8px;
+	margin-left:7px;
+	font-size:11px;
+}
+#footR .gy a {
+	width:40px;
+}
+#footR .gy a:hover {
+	background:none;
+	width:40px;
+}
+.foot_select {
+	background:url(../images/f_img_h.png) no-repeat;
+	width:23px;
+	height:21px;
+}
+#my {
+	width:187px;
+	min-height:411px;
+	_height:411px;
+	position:absolute;
+	right:7px;
+	bottom:35px;
+}
+.myt {
+	width:187px;
+	height:35px;
+	background:url(../images/my_1.png) no-repeat;
+	position:relative;
+}
+.myt span {
+	display:block;
+	height:25px;
+	padding-left:18px;
+	padding-top:10px;
+	color:#004986;
+}
+.mya {
+	position:absolute;
+	top:12px;
+	right:10px;
+}
+.myc {
+	width:187px;
+	background:url(../images/my_3.png) repeat-y;
+	padding-top:2px;
+	padding-left:8px;
+	min-height:373px;
+	_height:373px;
+}
+.myc li {
+	height:24px;
+	width:177px;
+	margin-bottom:1px;
+}
+.myc li a {
+	display:block;
+	width:167px;
+	padding-left:10px;
+	color:#000;
+	text-decoration:none;
+	padding-top:2px;
+	height:21px;
+}
+.myc li a:hover {
+	background:url(../images/my_5.jpg) repeat-x;
+	height:24px;
+	color:#FFF;
+}
+.myc li .myc_select {
+	display:block;
+	width:167px;
+	padding-left:10px;
+	color:#FFF;
+	text-decoration:none;
+	padding-top:2px;
+	height:24px;
+	background:url(../images/my_5.jpg) repeat-x;
+}

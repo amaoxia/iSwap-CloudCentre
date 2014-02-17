@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!--
+		该属性设置Struts 2是否支持动态方法调用，该属性的默认值是true。如果需要关闭动态方法调用，则可设置该属性为false。
+		如动态调用如：user!list.action
+	-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 该属性设置Struts 2应用是否使用开发模式。如果设置该属性为true，则可以在应用出错时显示更多、更友好的出错提示。 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- 该属性设置浏览器是否缓存静态内容。当应用处于开发阶段时，我们希望每次请求都获得服务器的最新响应，则可设置该属性为false。 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<constant name="struts.convention.package.locators.basePackage"
+		value="com.ligitalsoft" />
+	<constant name="struts.convention.action.includeJars"
+		value=".*?/iswap.*?jar(!/)?" />
+	<constant name="struts.convention.result.path" value="/" />
+	<!--  -->
+	<constant name="struts.convention.default.parent.package" value="iswap-CloudCenter" />
+	<constant name="struts.multipart.parser" value="pell"></constant>
+	<constant name="struts.multipart.saveDir" value="C:/temp"></constant>
+	<constant name="struts.multipart.maxSize" value="900000000"></constant>
+	<package name="iswap-CloudCenter" namespace="/" extends="convention-default" abstract="true">
+
+		<!--
+			基于paramsPrepareParamsStack, 增加store
+			interceptor保证actionMessage在redirect后不会丢失
+		-->
+		<interceptors>
+			<interceptor name="exceptionInterceptor"
+				class="com.common.framework.web.ExceptionInterceptor">
+			</interceptor>
+			<interceptor-stack name="crudStack">
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+				<interceptor-ref name="token">
+				<param name="includeMethods">add</param>
+				</interceptor-ref>
+				<interceptor-ref name="paramsPrepareParamsStack" />
+				<interceptor-ref name="exceptionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="crudStack" />
+		<!--  -->
+		<global-results>
+			<result name="error" type="freemarker">
+				<param name="location">/error.ftl</param>
+			</result>
+			<result name="invalid.token" type="redirect">
+				<param name="location">/repeatSubmitTest.jsp</param>
+			</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error"
+				exception="java.lang.Exception">
+			</exception-mapping>
+		</global-exception-mappings>
+	</package>
+</struts>

@@ -1,0 +1,55 @@
+.webfx-tree-container {
+	margin: 0px;
+	padding: 0px;
+	font: icon;
+	white-space: nowrap;
+	width:140px;
+}
+
+.webfx-tree-item {
+	padding: 0px;
+	margin: 0px;
+	font: icon;
+	color: black;
+	white-space: nowrap;
+}
+
+.webfx-tree-item a, .webfx-tree-item a:active, .webfx-tree-item a:hover {
+	margin-left: 3px;
+	padding: 1px 2px 1px 2px;
+}
+
+.webfx-tree-item a:link {
+	color: black;
+	text-decoration: none;
+}
+
+.webfx-tree-item a:hover {
+	color: black;
+	text-decoration: none;
+	background-color: #c0d2ec;
+}
+
+.webfx-tree-item a:active {
+	color: #016CA2;
+	text-decoration: none;
+}
+
+.webfx-tree-item img {
+	vertical-align: middle;
+	border: 0px;
+}
+
+.webfx-tree-icon {
+	width: 16px;
+	height: 16px;
+}
+.webfx-tree-item a.selected {
+	color: black;
+	background: #c0d2ec;
+}
+
+.webfx-tree-item a.selected-inactive {
+	color: black;
+	background-color: #c0d2ec;
+}
