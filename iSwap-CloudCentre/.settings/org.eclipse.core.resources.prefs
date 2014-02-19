@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+encoding//src/com/ligitalsoft/ajax/action/AjaxAction.java=UTF-8
+encoding//src/com/ligitalsoft/ajax/dao/AjaxDao.java=UTF-8
+encoding//src/com/ligitalsoft/ajax/service/IAjaxService.java=UTF-8
+encoding//src/com/ligitalsoft/ajax/service/impl/AjaxServiceImpl.java=UTF-8
 encoding//src/com/ligitalsoft/appitemmgr/action/AppItemAction.java=UTF-8
 encoding//src/com/ligitalsoft/appitemmgr/action/AppItemExchangeConfAction.java=UTF-8
 encoding//src/com/ligitalsoft/appitemmgr/action/AppMsgAction.java=UTF-8

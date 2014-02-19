@@ -3,6 +3,7 @@
 	<name>iSwap-CloudCentre</name>
 	<comment></comment>
 	<projects>
+		<project>iSwap-Common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

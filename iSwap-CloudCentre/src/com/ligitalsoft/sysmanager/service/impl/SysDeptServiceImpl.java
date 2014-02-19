@@ -75,7 +75,7 @@ public class SysDeptServiceImpl extends BaseSericesImpl<SysDept> implements
 		});
 		return JSONArray.fromObject(nodes, jsonConfig);
 	}
-
+	
 	@Transactional(readOnly = true)
 	public JSONArray getChildDeptById(Long id){
 		List<Node> nodes = new ArrayList<Node>();

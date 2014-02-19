@@ -15,9 +15,9 @@
 		 	 $(function () {
 	            $("#container").ligerLayout({ leftWidth: 200 }); //这一句可是关键啊
 	        });
-		 	var treeData = [];
+		 	var treeDataStr = "";
 		 	var manager = null; 
-		 	var treeConfig = { data:treeData,  
+		 	var treeConfig = { data:null,  
     							textFieldName:"name",
 				                idFieldName:"id",
 				                parentIDFieldName:"pid",
@@ -37,36 +37,96 @@
 								        	}
 								        	$('#content').attr("src","${path}/cloudnode/nodetask/task!list.action?changeItemId="+node.data.uri+"&deptId=${deptId}&appMsgId="+appId+"&itemId="+itemId+"&itemType="+itemType);
 				                }};
-			var idArr = [];
+			//根据条件过滤数据
 	        function appItemGrep(){
 	        	var searchText = $('#searchText').val();
-	        	manager.clear();
+	        	var grepData = eval("("+treeDataStr+")");
 	        	if(searchText){
-				}else{
-					searchText = "应用";
+	        		var rootData = null;
+	        		var tempData = new Array();
+	        		var appMsgArray = new Array();
+	        		var appItemArray = new Array();
+	        		var taskArray = new Array();
+	        		$.each(grepData, function(index, nodeData){
+	        			if(nodeData.id=="-1"){
+							rootData = nodeData;
+						}else if(nodeData.name.indexOf(searchText)>=0){
+							tempData.push(nodeData);
+						}else if(nodeData.id.split("-").length=1){//应用
+							appMsgArray[nodeData.id] = nodeData;
+						}else if(nodeData.id.split("-").length==2){//指标
+							appItemArray[nodeData.id] = nodeData;
+						}else if(nodeData.id.split("-").length==3){//发送接收任务
+							var taskNodeArray = taskArray[nodeData.id];
+							if(taskNodeArray){
+								taskNodeArray.push(nodeData);
+							}else{
+								taskNodeArray = new Array();
+								taskNodeArray.push(nodeData);
+								taskArray[nodeData.id] = taskNodeArray;
+							}
+						}
+					});
+					grepData = new Array();
+					$.each(tempData, function(index, nodeData){//补指标和应用
+						grepData.push(nodeData);
+						if(nodeData.id.split("-").length==1){//应用补指标
+							var tempArray = new Array();
+							$.each(appItemArray, function(i, itemData){
+								if(itemData.id){//指标id是否以应用id为前缀
+									grepData.push(itemData);
+								}else{
+									tempArray[itemData.id] = itemData;
+								}
+							});
+							appItemArray = tempArray;
+						}else if(nodeData.id.split("-").length==2){//指标补应用
+							var appMsgId = nodeData.id.substring(0,nodeData.id.indexOf("-"));
+							var msgData = appMsgArray[appMsgId];
+							if(msgData){
+								grepData.push(msgData);
+								appMsgArray[appMsgId] = null;
+							}
+						}
+					});
+					var tempGrepData = {};
+   					extend(tempGrepData,grepData);//拷贝数组
+					$.each(tempGrepData, function(index, nodeData){//指标补任务
+						var taskDataArray = taskArray[nodeData.id];
+						if(taskDataArray){
+							grepData.concat(taskDataArray);
+							taskArray[nodeData.id] = null;
+						}
+					});
+					grepData.push(rootData);
 				}
-				var grepData = $.grep(treeData, function(cur,i){
-					var bool = (cur['name'].indexOf(searchText))>=0?true:false;
-					if(bool)idArr.push(cur['id']);
-					return bool;
-				});
-				treeConfig.data = grepData;
-        		$("#tree1").ligerTree(treeConfig);
-				manager = $("#tree1").ligerGetTreeManager(); 
+				manager.clear();
+				manager.setData(grepData);
 	        }
+	        function getType(o){
+		        var _t;
+		        return ((_t = typeof(o)) == "object" ? o==null && "null" || Object.prototype.toString.call(o).slice(8,-1):_t).toLowerCase();
+		    }
+		    function extend(destination,source){
+		        for(var p in source){
+		            if(getType(source[p])=="array"||getType(source[p])=="object"){
+		                destination[p]=getType(source[p])=="array"?[]:{};
+		                arguments.callee(destination[p],source[p]);
+		            }else{
+		                destination[p]=source[p];
+		            }
+		        }
+		    }
 	        
 	        $(document).ready(function(){
+	        	$("#tree1").ligerTree(treeConfig);
+	        	manager = $("#tree1").ligerGetTreeManager(); 
 	        	$.post("${path}/exchange/item/item!getAppItemTreeByDeptId4Node.action",{deptid:'${deptId}'},function(result, status){
 					if(result){
-						treeData = result;
-						treeConfig.data = treeData;
-	        			$("#tree1").ligerTree(treeConfig);
-	        			manager = $("#tree1").ligerGetTreeManager(); 
-	        			//manager.append(treeData);
+						treeDataStr = result;
+	        			manager.setData(eval("("+result+")"));
 					}
 				});
-				//$("#tree1").ligerTree(treeConfig);
-	        	//manager = $("#tree1").ligerGetTreeManager();
 	        });
 	    </script>
 	</head>

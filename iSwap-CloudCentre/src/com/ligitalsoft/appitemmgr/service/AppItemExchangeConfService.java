@@ -27,5 +27,7 @@ public interface AppItemExchangeConfService extends IBaseServices<AppItemExchang
 	public AppItemExchangeConf addEntity(AppItemExchangeConf appItemExchangeConf);
 	
 	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) ;
+	
+	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId, Long AppItemId, Long sendDeptId);
 }
 

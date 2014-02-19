@@ -33,7 +33,7 @@ import com.ligitalsoft.model.cloudstorage.MetaData;
 @Service("appItemExchangeConfService")
 public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExchangeConf> implements AppItemExchangeConfService {
 
-private AppItemExchangeConfDao appItemExchangeConfDao;
+	private AppItemExchangeConfDao appItemExchangeConfDao;
     
     private AppItemExchangeConfDetailsDao appItemExchangeConfDetailsDao;
     
@@ -100,6 +100,16 @@ private AppItemExchangeConfDao appItemExchangeConfDao;
    		return appItemExchangeConf;
    	}
     
+	@Override
+	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId,
+			Long AppItemId, Long sendDeptId) {
+		String hql = "from AppItemExchangeConf e where e.appMsg.id=? and e.appItem.id=? and e.sendDept.id=?";
+		List<AppItemExchangeConf> appItemExchangeConfList = appItemExchangeConfDao.findListByHql(hql, appMsgId, AppItemId, sendDeptId);
+		if(appItemExchangeConfList!=null&&appItemExchangeConfList.size()>0)return appItemExchangeConfList.get(0);
+		return null;
+	}
+    
+    
     @Override
     public EntityHibernateDao<AppItemExchangeConf> getEntityDao() {
         return appItemExchangeConfDao;
@@ -120,5 +130,4 @@ private AppItemExchangeConfDao appItemExchangeConfDao;
 	public void setChangeItemDao(ChangeItemDao changeItemDao) {
 		this.changeItemDao = changeItemDao;
 	}
-    
 }

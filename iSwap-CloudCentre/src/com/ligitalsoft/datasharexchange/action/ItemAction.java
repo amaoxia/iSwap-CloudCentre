@@ -28,6 +28,7 @@ import com.common.framework.services.IBaseServices;
 import com.common.framework.view.FreemarkerBaseAction;
 import com.common.framework.view.StrutsAction;
 import com.common.utils.common.StringUtils;
+import com.common.utils.web.ServletUtils;
 import com.common.utils.web.struts2.Struts2Utils;
 import com.ligitalsoft.appitemmgr.service.AppMsgService;
 import com.ligitalsoft.cloudnode.service.IDataSourceService;
@@ -512,7 +513,8 @@ public class ItemAction extends FreemarkerBaseAction<ChangeItem> {
     
     public void getAppItemTreeByDeptId4Node(){
 		JSONArray appItemTree = changeItemService.getAppItemTreeByDeptId4Node(new Long(deptid));
-		Struts2Utils.renderJson(appItemTree, "encoding:GBK");
+		Struts2Utils.renderJson(ServletUtils.TEXT_TYPE, appItemTree, "encoding:GBK");
+		
 	}
 
 	public void getAppItemTreeByDeptId4Center(){

@@ -109,31 +109,54 @@
 			$('#appItemId').html($('#appItemId').html()+options);
 		});
 	
-		 $("#txt1").ligerComboBox({
+		var treeManager1 = null;
+		var treeManager2 = null;
+		var txt1Manager = $("#txt1").ligerComboBox({
 	        width: 300,
 	        selectBoxWidth: 300,
 	        selectBoxHeight: 200,
 	        textField:'name', valueField: 'id',treeLeafOnly:true,
-	        onSelected:onSelectedSendDept,
 	        tree: { url: "${path}/sysmanager/dept/dept!getDeptTree.action", checkbox: false,
 	                textFieldName:"name",
 	                idFieldName:"id",
 	                parentIDFieldName:"pid"
-	              }
+	              },
+	        onBeforeOpen:function(){
+	        	var appMsgId = $('#appMsgId').val();
+	        	var appItemId = $('#appItemId').val();
+	        	if(appMsgId){
+	        		if(appItemId){
+	        			return true;
+		        	}else{
+		        		alert("请选择所属指标");
+		        		return false;
+		        	}
+	        	}else{
+	        		alert("请选择所属应用");
+	        		return false;
+	        	}
+	        },
+	        onSelected:function(newvalue){
+	        	$('#sendDeptId').val(newvalue);
+	        	var appMsgId = $('#appMsgId').val();
+	        	var appItemId = $('#appItemId').val();
+    			treeManager2 = $(txt2Manager.tree).ligerGetTreeManager();  
+    			treeManager2.clear();
+    			treeManager2.loadData(null,"${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action",{appMsgId:appMsgId,appItemId:appItemId,sendDeptId:newvalue});
+	        }
 	    });
 	    
-	    var data = [{id:1,name:"桔子"},{id:2,name:"苹果"},{id:1,name:"梨子"}];
 	    var txt2Manager = $("#txt2").ligerComboBox({
 	        width: 300,
 	        selectBoxWidth: 300,
 	        selectBoxHeight: 200,
 	        textField:'name', valueField: 'id',treeLeafOnly:true,
 	        onSelected:onSelectedReceiveDept,
-	        tree: { checkbox: false,
+	        tree: { url: "${path}/sysmanager/dept/dept!getDeptTree.action", 
+	        		checkbox: true,
 	                textFieldName:"name",
 	                idFieldName:"id",
-	                parentIDFieldName:"pid",
-	                data:data
+	                parentIDFieldName:"pid"
 	              },
 	        onBeforeOpen:function(){
 	        	var appMsgId = $('#appMsgId').val();
@@ -142,13 +165,7 @@
 	        	if(appMsgId){
 	        		if(appItemId){
 	        			if(sendDeptId){
-	        				//txt2Manager.tree.clear();
-	        				//this.setData();
-	        				//this.tree = { url: "${path}/sysmanager/dept/dept!getDeptTree.action", checkbox: true,
-						               // textFieldName:"name",
-						               // idFieldName:"id",
-						               // parentIDFieldName:"pid"
-						             // };
+	        				return true;
 			        	}else{
 			        		alert("请选择数据提供部门");
 			        		return false;
@@ -173,10 +190,6 @@
 		});
 	});
 
-	function onSelectedSendDept(value){
-		$('#sendDeptId').val(value);
-	}
-	
 	function onSelectedReceiveDept(values){
 		$('#appItemExchangeConfDetailsSpan').html();
 		var idsArray = values.split(";");

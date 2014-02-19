@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="iSwap-CloudCentre">
         <wb-resource deploy-path="/" source-path="/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="iSwap-Common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/iSwap-Common/iSwap-Common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/iSwap-CloudCentre/build/classes"/>
         <property name="context-root" value="/iswap"/>
     </wb-module>
