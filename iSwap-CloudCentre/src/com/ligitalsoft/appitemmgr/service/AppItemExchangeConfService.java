@@ -9,6 +9,7 @@ package com.ligitalsoft.appitemmgr.service;
 
 import java.util.List;
 
+import com.common.framework.exception.ServiceException;
 import com.common.framework.services.IBaseServices;
 import com.ligitalsoft.model.appitemmgr.AppItemExchangeConf;
 
@@ -24,10 +25,16 @@ public interface AppItemExchangeConfService extends IBaseServices<AppItemExchang
 	
 	public List<AppItemExchangeConf> findAllByProperty();
 	
+	public List<AppItemExchangeConf> addEntitys(List<AppItemExchangeConf> appItemExchangeConfList);
+	
+	public List<AppItemExchangeConf> updateEntitys(List<AppItemExchangeConf> appItemExchangeConfList) ;
+	
 	public AppItemExchangeConf addEntity(AppItemExchangeConf appItemExchangeConf);
 	
 	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) ;
 	
-	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId, Long AppItemId, Long sendDeptId);
+	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId, Long AppItemId, String[] sendDeptIds);
+
+	public void deleteEntityById(Long appItemExchangeConfId) throws ServiceException ;
 }
 

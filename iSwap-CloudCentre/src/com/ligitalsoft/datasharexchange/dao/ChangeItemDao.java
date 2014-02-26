@@ -8,7 +8,6 @@
 package com.ligitalsoft.datasharexchange.dao;
 
 import java.util.List;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -125,5 +124,10 @@ public class ChangeItemDao extends EntityHibernateDao<ChangeItem> {
 	public  List<ChangeItem> findListByIds(String ids, PageBean page){
 		String hql="from ChangeItem e where e.id in ("+ids+")";
 		return super.findListByPage(hql, page, null);
+	}
+	
+	public int removeAllByAppItemExchangeConfId(Long appItemExchangeConfId){
+		String hql = "delete ChangeItem e where e.id=?";
+        return this.powerHibernateDao.executeUpdate(hql, appItemExchangeConfId);
 	}
 }

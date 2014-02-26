@@ -1,15 +1,6 @@
 package com.ligitalsoft.ajax.service;
 
-import java.util.List;
-import java.util.Map;
-
 import net.sf.json.JSONArray;
-
-import com.common.framework.dao.SortPara;
-import com.common.framework.exception.ServiceException;
-import com.common.framework.services.IBaseServices;
-import com.common.framework.web.pager.PageBean;
-import com.ligitalsoft.model.system.SysDept;
 
 /**
  * Ajax SERVICE
@@ -21,5 +12,5 @@ import com.ligitalsoft.model.system.SysDept;
  */
 public interface IAjaxService {
 
-	public JSONArray depTree4AppItemExchangeConf(Long appMsgId, Long AppItemId, Long sendDeptId);
+	public JSONArray depTree4AppItemExchangeConf(Long appMsgId, Long AppItemId, String[] sendDeptIdsArray);
 }

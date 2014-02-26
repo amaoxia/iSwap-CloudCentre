@@ -7,6 +7,8 @@
 
 package com.ligitalsoft.appitemmgr.action;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -42,11 +44,13 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 	
     private AppItemExchangeConfService appItemExchangeConfService;
     
+    private List<AppItemExchangeConf> appItemExchangeConfList;
+    
     private AppItemExchangeConf appItemExchangeConf;
     
 	@Override
 	public String add() {
-		appItemExchangeConfService.addEntity(appItemExchangeConf);
+		appItemExchangeConfService.addEntitys(appItemExchangeConfList);
 		return StrutsAction.RELOAD;
 	}
 	
@@ -58,8 +62,20 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 
 	@Override
 	public String delete() {
-		super.delete();
+		try{
+			appItemExchangeConfService.deleteEntityById(appItemExchangeConf.getId());
+		}catch(Exception e){
+			log.error("AppItemExchangeConfService invoke delete exception ", e);
+		}
 		return "listAction";
+	}
+	
+	public List<AppItemExchangeConf> getAppItemExchangeConfList() {
+		return appItemExchangeConfList;
+	}
+
+	public void setAppItemExchangeConfList(List<AppItemExchangeConf> appItemExchangeConfList) {
+		this.appItemExchangeConfList = appItemExchangeConfList;
 	}
 	
 	public AppItemExchangeConf getAppItemExchangeConf() {

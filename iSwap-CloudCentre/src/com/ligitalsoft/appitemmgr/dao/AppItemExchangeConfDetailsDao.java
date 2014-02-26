@@ -24,7 +24,7 @@ import com.ligitalsoft.model.appitemmgr.AppItemExchangeConfDetails;
 public class AppItemExchangeConfDetailsDao extends EntityHibernateDao<AppItemExchangeConfDetails> {
 
 	 public int removeAllByAppItemExchangeConfId(Long appItemExchangeConfId) {
-	        String hql = "delete AppItemExchangeConfDetails where appItemExchangeConf.id=?";
+	        String hql = "delete AppItemExchangeConfDetails e where e.appItemExchangeConf.id=?";
 	        return this.powerHibernateDao.executeUpdate(hql, appItemExchangeConfId);
 	    }
 }

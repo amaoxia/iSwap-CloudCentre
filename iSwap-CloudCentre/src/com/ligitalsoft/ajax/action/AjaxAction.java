@@ -42,8 +42,8 @@ public class AjaxAction extends StrutsAction {
 	public String getDeptTree4AppItemExchangeConf() {
 		String appMsgId = getStringParameter("appMsgId");
 		String appItemId = getStringParameter("appItemId");
-		String sendDeptId = getStringParameter("sendDeptId");
-		JSONArray deptTree = ajaxService.depTree4AppItemExchangeConf(Long.parseLong(appMsgId), Long.parseLong(appItemId), Long.parseLong(sendDeptId));
+		String sendDeptIds = getStringParameter("sendDeptIds");
+		JSONArray deptTree = ajaxService.depTree4AppItemExchangeConf(Long.parseLong(appMsgId), Long.parseLong(appItemId), sendDeptIds!=null&&!"".equals(sendDeptIds)?sendDeptIds.split(";"):null);
 		Struts2Utils.renderJson(deptTree, "encoding:GBK");
 		return null;
 	}

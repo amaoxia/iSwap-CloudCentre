@@ -1,6 +1,7 @@
 package com.ligitalsoft.ajax.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +10,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
 import net.sf.json.util.PropertyFilter;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,16 +39,19 @@ public class AjaxServiceImpl implements IAjaxService {
 	private AppItemExchangeConfService appItemExchangeConfService;
 	
 	@Transactional(readOnly = true)
-	public JSONArray depTree4AppItemExchangeConf(Long appMsgId, Long AppItemId, Long sendDeptId) {
+	public JSONArray depTree4AppItemExchangeConf(Long appMsgId, Long AppItemId, String[] sendDeptIdsArray) {
 		List<Node> nodes = new ArrayList<Node>();
+		//过滤掉对应指标下对应发送部门
 		Set<SysDept> filterDeptSet = new HashSet<SysDept>();
 		List<SysDept> depts = sysDeptDao.findDeptOrderByLevel();
-		AppItemExchangeConf appItemExchangeConf = appItemExchangeConfService.findAppItemExchangeConfBySendDept(appMsgId, AppItemId, sendDeptId);
-		if(appItemExchangeConf!=null){
-			List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = appItemExchangeConf.getAppItemExchangeConfDetails();
-			if(appItemExchangeConfDetailsList!=null&&appItemExchangeConfDetailsList.size()>0){
-				for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
-					filterDeptSet.add(appItemExchangeConfDetails.getReceiveDept());
+		if(sendDeptIdsArray!=null){
+			AppItemExchangeConf appItemExchangeConf = appItemExchangeConfService.findAppItemExchangeConfBySendDept(appMsgId, AppItemId, sendDeptIdsArray);
+			if(appItemExchangeConf!=null){
+				List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = appItemExchangeConf.getAppItemExchangeConfDetails();
+				if(appItemExchangeConfDetailsList!=null&&appItemExchangeConfDetailsList.size()>0){
+					for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
+						filterDeptSet.add(appItemExchangeConfDetails.getReceiveDept());
+					}
 				}
 			}
 		}
@@ -58,7 +63,7 @@ public class AjaxServiceImpl implements IAjaxService {
 		root.setOpen(true);
 		nodes.add(root);
 		for (SysDept dept : depts) {
-			if(filterDeptSet.contains(dept)||dept.getId().equals(sendDeptId))continue;
+			if(filterDeptSet.contains(dept)||ArrayUtils.contains(sendDeptIdsArray, dept.getId().toString()))continue;
 			Node node = new Node();
 			node.setId(dept.getId() + "");
 			node.setName(dept.getDeptName());

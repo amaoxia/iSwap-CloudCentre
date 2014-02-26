@@ -344,7 +344,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/projects/iswaps/iswap7/doc/lib/hibernate-core-3.5.5-Final.jar">
+	<classpathentry kind="lib" path="E:/projects/iswaps/iswap7/doc/lib/hibernate-core-3.5.5-Final.jar" sourcepath="C:/Users/admin/.m2/repository/org/hibernate/hibernate-core/3.5.5-Final/hibernate-core-3.5.5-Final-sources.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Scope;
 
 import com.common.framework.dao.Constants;
 import com.common.framework.dao.QueryPara;
-import com.common.framework.exception.ServiceException;
 import com.common.framework.services.IBaseServices;
 import com.common.framework.view.FreemarkerBaseAction;
 import com.common.framework.view.StrutsAction;

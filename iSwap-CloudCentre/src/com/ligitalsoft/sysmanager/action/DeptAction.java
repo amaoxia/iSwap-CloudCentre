@@ -31,7 +31,6 @@ import com.ligitalsoft.sysmanager.service.ISysUserRoleService;
 import com.ligitalsoft.sysmanager.util.Costant;
 import com.ligitalsoft.sysmanager.util.FileUtil;
 
-import com.common.framework.dao.QueryPara;
 import com.common.framework.exception.ServiceException;
 import com.common.framework.services.IBaseServices;
 import com.common.framework.view.FreemarkerBaseAction;

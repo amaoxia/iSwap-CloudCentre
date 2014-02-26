@@ -16,6 +16,9 @@
 <body class="pm01_c">
 	<form method="post" action="${path}/appitemmgr/appItemExchangeConf/appItemExchangeConf!update.action" id="saveForm">
    	<input type="hidden" name="appItemExchangeConf.id" value="${id?default('')}"/>
+   	<input type="hidden" name="appItemExchangeConf.appMsg.id" value="${appMsg.id}"/>
+   	<input type="hidden" name="appItemExchangeConf.appItem.id" value="${appItem.id}"/>
+   	<input type="hidden" name="appItemExchangeConf.appMsg.id" value="${appMsg.id}"/>
    <@s.token/>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -28,7 +31,7 @@
                   	<li class="item_bg">
                       <p>所属应用:</p>
                       <span>
-                      	<select style="width:300px;" name="appItemExchangeConf.appMsg.id" id="appMsgId" defaultValue="${appMsg.id}">
+                      	<select style="width:300px;" name="appItemExchangeConf.appMsg.id" id="appMsgId" defaultValue="${appMsg.id}" disabled="disabled">
                       		<option>请选择...</option>
                       	</select>
                       <span><div id="appMsgIdTip"></div></span>
@@ -36,7 +39,7 @@
                     <li>
                       <p>所属指标:</p>
                       <span>
-                      	<select style="width:300px;" name="appItemExchangeConf.appItem.id" id="appItemId" defaultValue="${appItem.id}">
+                      	<select style="width:300px;" name="appItemExchangeConf.appItem.id" id="appItemId" defaultValue="${appItem.id}" disabled="disabled">
                       		<option>请选择...</option>
                       	</select>
                       </span>
@@ -46,7 +49,7 @@
                       <p>数据提供部门:</p>
                       <span>
                       	<input type="hidden" id="sendDeptId" name="appItemExchangeConf.sendDept.id" value="${sendDept.id}"/>
-                     	<input type="text" id="txt1" value="${sendDept.deptName}" style="border: 0 none;padding: 0;"/>
+                     	<input type="text" style="width:290px;" id="txt1" value="${sendDept.deptName}" disabled="disabled"/><!-- style="border: 0 none;padding: 0;"-->
                       </span>
                       <span><div id="sendDeptIdTip"></div></span>
                     </li>
@@ -118,6 +121,7 @@
 			$('#appItemId option[value="'+$('#appItemId').attr("defaultValue")+'"]').attr("selected",true);
 		});
 	
+		/**
 		 $("#txt1").ligerComboBox({
 	        width: 300,
 	        selectBoxWidth: 300,
@@ -136,14 +140,16 @@
                     }
 	         }
 	    });
+	     **/
+	     
 	    
-	    $("#txt2").ligerComboBox({
+	    var txt2Manager = $("#txt2").ligerComboBox({
 	        width: 300,
 	        selectBoxWidth: 300,
 	        selectBoxHeight: 300,
 	        textField:'name', valueField: 'id',treeLeafOnly:true,
 	        onSelected:onSelectedReceiveDept,
-	        tree: { url: "${path}/sysmanager/dept/dept!getDeptTree.action", checkbox: true,
+	        tree: { url: "${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action?appMsgId=${appMsg.id}&appItemId=${appItem.id}", checkbox: true,
 	                textFieldName:"name",
 	                idFieldName:"id",
 	                parentIDFieldName:"pid",
@@ -154,7 +160,9 @@
 	                	$.each(receiveDeptIdsArray, function(index, deptId){
 	                		if(deptId){
 	                			var nodeData = tree.getDataByID(deptId);
-	                			$(tree.getNodeDom(nodeData.treedataindex)).find('div .l-checkbox-unchecked').removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
+	                			if(nodeData){
+	                				$(tree.getNodeDom(nodeData.treedataindex)).find('div .l-checkbox-unchecked').removeClass("l-checkbox-unchecked").addClass("l-checkbox-checked");
+	                			}
 	                		}
 	                	});
                     }

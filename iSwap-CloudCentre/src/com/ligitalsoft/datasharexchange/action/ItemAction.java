@@ -519,7 +519,7 @@ public class ItemAction extends FreemarkerBaseAction<ChangeItem> {
 
 	public void getAppItemTreeByDeptId4Center(){
 		JSONArray appItemTree = changeItemService.getAppItemTreeByDeptId4Center();
-		Struts2Utils.renderJson(appItemTree, "encoding:GBK");
+		Struts2Utils.renderJson(ServletUtils.TEXT_TYPE, appItemTree, "encoding:GBK");
 	}
 	
 	public void getChangeItem4Ajax() throws ServiceException{

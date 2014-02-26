@@ -27,7 +27,7 @@
                   	<li class="item_bg">
                       <p>所属应用:</p>
                       <span>
-                      	<select style="width:300px;" name="appItemExchangeConf.appMsg.id" id="appMsgId">
+                      	<select style="width:300px;" id="appMsgId"><!-- name="appItemExchangeConf.appMsg.id"-->
                       		<option value="">请选择...</option>
                       	</select>
                       <span><div id="appMsgIdTip"></div></span>
@@ -35,7 +35,7 @@
                     <li>
                       <p>所属指标:</p>
                       <span>
-                      	<select style="width:300px;" name="appItemExchangeConf.appItem.id" id="appItemId">
+                      	<select style="width:300px;" id="appItemId"><!-- name="appItemExchangeConf.appItem.id" -->
                       		<option value="">请选择...</option>
                       	</select>
                       </span>
@@ -44,10 +44,11 @@
                     <li class="item_bg">
                       <p>数据提供部门:</p>
                       <span>
-                      	<input type="hidden" id="sendDeptId" name="appItemExchangeConf.sendDept.id"/>
+                      	<input type="hidden" id="sendDeptIds"/><!--  name="appItemExchangeConf.sendDept.id" -->
+                      	<span style="display:none;" id="appItemExchangeConfsSpan"></span>
                      	<input type="text" id="txt1" style="border: 0 none;padding: 0;"/>
                       </span>
-                      <span><div id="sendDeptIdTip"></div></span>
+                      <span><div id="sendDeptIdsTip"></div></span>
                     </li>
                     <li>
                       <p>数据接收部门:</p>
@@ -59,14 +60,14 @@
                     <li class="item_bg">
                       <p>是否共享:</p>
                       <span>
-                     	<input type="radio" name="appItemExchangeConf.isShare" value="0" checked="true">是</input>
-                     	<input type="radio" name="appItemExchangeConf.isShare" value="1">否</input>
+                     	<input type="radio" id="isShare" value="0" checked="true">是</input><!-- name="appItemExchangeConf.isShare"-->
+                     	<input type="radio" id="isShare" value="1">否</input><!-- name="appItemExchangeConf.isShare"-->
                       </span>
                     </li>
                       <li>
 						  <p>描述</p>
 						  <span>
-						  <textarea  name="appItemExchangeConf.remark" cols="42" rows="5"></textarea>
+						  <textarea cols="42" rows="5" id="remark" ></textarea><!-- name="appItemExchangeConf.remark"-->
 						  </span>
 						</li>
                   </ul>
@@ -116,7 +117,8 @@
 	        selectBoxWidth: 300,
 	        selectBoxHeight: 200,
 	        textField:'name', valueField: 'id',treeLeafOnly:true,
-	        tree: { url: "${path}/sysmanager/dept/dept!getDeptTree.action", checkbox: false,
+	        tree: { url: "${path}/sysmanager/dept/dept!getDeptTree.action", 
+	        		checkbox: true,
 	                textFieldName:"name",
 	                idFieldName:"id",
 	                parentIDFieldName:"pid"
@@ -136,13 +138,22 @@
 	        		return false;
 	        	}
 	        },
-	        onSelected:function(newvalue){
-	        	$('#sendDeptId').val(newvalue);
+	        onSelected:function(values){
+	        	$('#sendDeptIds').val(values);
 	        	var appMsgId = $('#appMsgId').val();
 	        	var appItemId = $('#appItemId').val();
     			treeManager2 = $(txt2Manager.tree).ligerGetTreeManager();  
     			treeManager2.clear();
-    			treeManager2.loadData(null,"${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action",{appMsgId:appMsgId,appItemId:appItemId,sendDeptId:newvalue});
+    			treeManager2.loadData(null,"${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action",{appMsgId:appMsgId,appItemId:appItemId,sendDeptIds:values});
+	       		$('#appItemExchangeConfsSpan').html();
+				var idsArray = values.split(";");
+				var html = '';
+				$.each(idsArray, function(index, id){
+					html += '<input type="hidden" name="appItemExchangeConfList['+index+'].sendDept.id" value="'+id+'"/>'
+				        +'<input type="hidden" name="appItemExchangeConfList['+index+'].appMsg.id" value="'+appMsgId+'"/>'
+				        +'<input type="hidden" name="appItemExchangeConfList['+index+'].appItem.id" value="'+appItemId+'"/>';
+				});
+				$('#appItemExchangeConfsSpan').html(html);
 	        }
 	    });
 	    
@@ -161,10 +172,10 @@
 	        onBeforeOpen:function(){
 	        	var appMsgId = $('#appMsgId').val();
 	        	var appItemId = $('#appItemId').val();
-	        	var sendDeptId = $('#sendDeptId').val();
+	        	var sendDeptIds = $('#sendDeptIds').val();
 	        	if(appMsgId){
 	        		if(appItemId){
-	        			if(sendDeptId){
+	        			if(sendDeptIds){
 	        				return true;
 			        	}else{
 			        		alert("请选择数据提供部门");
@@ -194,9 +205,28 @@
 		$('#appItemExchangeConfDetailsSpan').html();
 		var idsArray = values.split(";");
 		var html = '';
+		var num = $('#appItemExchangeConfsSpan input').length;
+		if(num)num=num/3;
 		$.each(idsArray, function(index, id){
-			html += '<input type="hidden" name="appItemExchangeConf.appItemExchangeConfDetails['+index+'].receiveDept.id" value="'+id+'"/>';
+			for(i=0; i<num; i++){
+				html += '<input type="hidden" name="appItemExchangeConfList['+i+'].appItemExchangeConfDetails['+index+'].receiveDept.id" value="'+id+'"/>';
+			}
 		});
 		$('#appItemExchangeConfDetailsSpan').html(html);
+	}
+	
+	var doSubmit = isSub;
+	isSub = function(){
+		var isShare = $('#isShare').val();
+		var remark = $('#remark').val();
+		var num = $('#appItemExchangeConfsSpan input').length;
+		if(num)num=num/3;
+		var html = "";
+		for(i=0; i<num; i++){
+			html += '<input type="hidden" name="appItemExchangeConfList['+i+'].isShare" value="'+isShare+'"/>'
+			        +'<input type="hidden" name="appItemExchangeConfList['+i+'].remark" value="'+remark+'"/>';
+		}
+		$('#appItemExchangeConfsSpan').html($('#appItemExchangeConfsSpan').html()+html);
+		doSubmit();
 	}
 </script>

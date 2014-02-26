@@ -16,7 +16,7 @@
 			      </div>
 			      <div class="c_m_btn"> 
 			      	<span class="cm_btn_m">
-			      		<a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/appitemmgr/appItemExchangeConf/appItemExchangeConf!addView.action','新增指标',500,480);">
+			      		<a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/appitemmgr/appItemExchangeConf/appItemExchangeConf!addView.action','新增指标',600,580);">
 				      		<b>
 				      			<img src="${path}/images/cmb_xj.gif" class="cmb_img" />
 				      			新增指标配置
