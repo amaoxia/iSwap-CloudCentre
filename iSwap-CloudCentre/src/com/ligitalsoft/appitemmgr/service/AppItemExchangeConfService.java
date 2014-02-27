@@ -27,11 +27,11 @@ public interface AppItemExchangeConfService extends IBaseServices<AppItemExchang
 	
 	public List<AppItemExchangeConf> addEntitys(List<AppItemExchangeConf> appItemExchangeConfList);
 	
-	public List<AppItemExchangeConf> updateEntitys(List<AppItemExchangeConf> appItemExchangeConfList) ;
+	public List<AppItemExchangeConf> updateEntitys(List<AppItemExchangeConf> appItemExchangeConfList) throws ServiceException;
 	
 	public AppItemExchangeConf addEntity(AppItemExchangeConf appItemExchangeConf);
 	
-	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) ;
+	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) throws ServiceException;
 	
 	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId, Long AppItemId, String[] sendDeptIds);
 

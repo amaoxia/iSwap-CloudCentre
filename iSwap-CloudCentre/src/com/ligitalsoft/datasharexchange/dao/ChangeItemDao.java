@@ -126,8 +126,23 @@ public class ChangeItemDao extends EntityHibernateDao<ChangeItem> {
 		return super.findListByPage(hql, page, null);
 	}
 	
+	public  List<ChangeItem> findListByExchangeConfAndDeptIdStr(String deptIdsStr, Long appItemExchangeConfId, Integer itemType){
+		String hql="from ChangeItem e where ee.appItemExchangeConf.id in("+deptIdsStr+") and e.itemType=? and e.appItemExchangeConf.id=? ";
+		return super.findListByHql(hql, appItemExchangeConfId, itemType);
+	}
+	
 	public int removeAllByAppItemExchangeConfId(Long appItemExchangeConfId){
-		String hql = "delete ChangeItem e where e.id=?";
+		String hql = "delete ChangeItem e where e.appItemExchangeConf.id=?";
         return this.powerHibernateDao.executeUpdate(hql, appItemExchangeConfId);
+	}
+	
+	public int removeAllByAppItemExchangeConfIdAndDeptIdStr(String deptIdsStr, Long appItemExchangeConfId, Integer itemType){
+		String hql = "delete ChangeItem e where e.appItemExchangeConf.id in("+deptIdsStr+") and e.itemType=? and e.appItemExchangeConf.id=? ";
+        return this.powerHibernateDao.executeUpdate(hql, appItemExchangeConfId, itemType);
+	}
+	
+	public int removeAllByIdsStr(String idsStr){
+		String hql = "delete ChangeItem e where e.id in("+idsStr+")";
+        return this.powerHibernateDao.executeUpdate(hql);
 	}
 }

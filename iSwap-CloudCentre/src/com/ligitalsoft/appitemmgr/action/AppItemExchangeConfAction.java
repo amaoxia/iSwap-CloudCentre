@@ -56,18 +56,25 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 	
 	@Override
 	public String update() {
-		appItemExchangeConfService.updateEntity(appItemExchangeConf);
-		return StrutsAction.RELOAD;
+		try{
+			appItemExchangeConfService.updateEntity(appItemExchangeConf);
+			return StrutsAction.RELOAD;
+		}catch(Exception e){
+			log.error("AppItemExchangeConfService invoke delete exception ", e);
+			return ERROR;
+		}
+		
 	}
 
 	@Override
 	public String delete() {
 		try{
 			appItemExchangeConfService.deleteEntityById(appItemExchangeConf.getId());
+			return "listAction";
 		}catch(Exception e){
 			log.error("AppItemExchangeConfService invoke delete exception ", e);
+			return ERROR;
 		}
-		return "listAction";
 	}
 	
 	public List<AppItemExchangeConf> getAppItemExchangeConfList() {

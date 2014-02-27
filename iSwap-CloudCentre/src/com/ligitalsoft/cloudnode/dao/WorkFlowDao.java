@@ -42,6 +42,13 @@ public class WorkFlowDao extends EntityHibernateDao<WorkFlow> {
 		List<WorkFlow> workFlowList = this.findListByHql(hql);
 		return workFlowList;
 	}
+	
+	public List<WorkFlow> findListByItemIdsStr(String itemIdsStr) {
+		String hql = "from WorkFlow e where e.itemId in(" + itemIdsStr+")";
+		List<WorkFlow> workFlowList = this.findListByHql(hql);
+		return workFlowList;
+	}
+	
 	/**
 	 * 查询部门下的所有流程
 	 * 
@@ -57,5 +64,10 @@ public class WorkFlowDao extends EntityHibernateDao<WorkFlow> {
 			
 		List<WorkFlow> workFlowList = this.findListByHql(hql);
 		return workFlowList;
+	}
+	
+	public int removeAllByByItemIdsStr(String itemIdsStr){
+		String hql = "delete WorkFlow e where e.itemId in(" + itemIdsStr+")";
+        return this.powerHibernateDao.executeUpdate(hql);
 	}
 }

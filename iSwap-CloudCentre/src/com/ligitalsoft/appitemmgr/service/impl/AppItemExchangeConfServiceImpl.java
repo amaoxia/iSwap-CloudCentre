@@ -7,8 +7,11 @@
 
 package com.ligitalsoft.appitemmgr.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ import com.common.framework.services.impl.BaseSericesImpl;
 import com.ligitalsoft.appitemmgr.dao.AppItemExchangeConfDao;
 import com.ligitalsoft.appitemmgr.dao.AppItemExchangeConfDetailsDao;
 import com.ligitalsoft.appitemmgr.service.AppItemExchangeConfService;
+import com.ligitalsoft.cloudnode.dao.NodeTaskMsgDao;
+import com.ligitalsoft.cloudnode.dao.WorkFlowDao;
 import com.ligitalsoft.datasharexchange.dao.ChangeItemDao;
 import com.ligitalsoft.model.appitemmgr.AppItemExchangeConf;
 import com.ligitalsoft.model.appitemmgr.AppItemExchangeConfDetails;
@@ -40,6 +45,10 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
     private AppItemExchangeConfDetailsDao appItemExchangeConfDetailsDao;
     
     private ChangeItemDao changeItemDao;
+    
+    private WorkFlowDao workFlowDao;
+    
+    private NodeTaskMsgDao nodeTaskMsgDao;
 
     @SuppressWarnings("unchecked")
     public List<AppItemExchangeConf> findAllByProperty() {
@@ -62,7 +71,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
 
 	@Override
 	public List<AppItemExchangeConf> updateEntitys(
-			List<AppItemExchangeConf> appItemExchangeConfList) {
+			List<AppItemExchangeConf> appItemExchangeConfList) throws ServiceException {
 		if(appItemExchangeConfList!=null&&appItemExchangeConfList.size()>0){
     		for(AppItemExchangeConf appItemExchangeConf: appItemExchangeConfList){
     			if(appItemExchangeConf!=null){
@@ -163,9 +172,11 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
    	}
     
     @Override
-   	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) {
+   	public AppItemExchangeConf updateEntity(AppItemExchangeConf appItemExchangeConf) throws ServiceException {
        	
-    	AppItemExchangeConf entity = findAppItemExchangeConfBySendDept(appItemExchangeConf.getAppMsg().getId(), appItemExchangeConf.getAppItem().getId(), new String[]{appItemExchangeConf.getSendDept().getId()+""});
+    	AppItemExchangeConf entity = this.findById(appItemExchangeConf.getId());
+    	entity.setIsShare(appItemExchangeConf.getIsShare());
+    	entity.setRemark(appItemExchangeConf.getRemark());
        	appItemExchangeConfDao.update(appItemExchangeConf);
        	
       //如果以前没有共享,则要处理
@@ -178,22 +189,66 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
           	changeItemDao.save(shareChangeItem);
       	}
        	
-       	appItemExchangeConfDetailsDao.removeAllByAppItemExchangeConfId(appItemExchangeConf.getId());
-       	
-       	List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = appItemExchangeConf.getAppItemExchangeConfDetails();
+      	//1.分出哪些接收方式新增的和减少的
+      	Map<Long, Long> lessIdsMap = new HashMap<Long, Long>();
+    	List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = entity.getAppItemExchangeConfDetails();
        	if(appItemExchangeConfDetailsList!=null && appItemExchangeConfDetailsList.size()>0){
        		for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
-       			appItemExchangeConfDetails.setAppItemExchangeConf(appItemExchangeConf);
-       			appItemExchangeConfDetailsDao.save(appItemExchangeConfDetails);
-       			
-       			//交换配置-接收
-       			ChangeItem receiveChangeItem = new ChangeItem();
-    			receiveChangeItem.setAppItemExchangeConf(appItemExchangeConf);
-    			receiveChangeItem.setSysDept(appItemExchangeConfDetails.getReceiveDept());
-    			receiveChangeItem.setItemType(2);
-    	    	changeItemDao.save(receiveChangeItem);
+       			lessIdsMap.put(appItemExchangeConfDetails.getReceiveDept().getId(), appItemExchangeConfDetails.getReceiveDept().getId());
        		}
        	}
+    	appItemExchangeConfDetailsList = appItemExchangeConf.getAppItemExchangeConfDetails();
+       	if(appItemExchangeConfDetailsList!=null && appItemExchangeConfDetailsList.size()>0){
+       		for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
+       			if(lessIdsMap.containsKey(appItemExchangeConfDetails.getReceiveDept().getId())){
+       				lessIdsMap.remove(appItemExchangeConfDetails.getReceiveDept().getId());
+       			}else{
+       				appItemExchangeConfDetails.setAppItemExchangeConf(appItemExchangeConf);
+           			appItemExchangeConfDetailsDao.save(appItemExchangeConfDetails);
+           			
+           			//交换配置-接收
+           			ChangeItem receiveChangeItem = new ChangeItem();
+        			receiveChangeItem.setAppItemExchangeConf(appItemExchangeConf);
+        			receiveChangeItem.setSysDept(appItemExchangeConfDetails.getReceiveDept());
+        			receiveChangeItem.setItemType(2);
+        	    	changeItemDao.save(receiveChangeItem);
+       			}
+       		}
+       	}
+       	
+       	//处理减少的
+       	if(lessIdsMap==null||lessIdsMap.size()<=0)return appItemExchangeConf;
+       	String idsStr = "";
+       	String deptIdsStr = "";
+       	for(Map.Entry<Long, Long> entry : lessIdsMap.entrySet()){
+       		idsStr += entry.getValue()+",";
+       		deptIdsStr += entry.getKey()+",";
+       	}
+       	idsStr = idsStr.substring(0,idsStr.length()-1);
+       	deptIdsStr = deptIdsStr.substring(0,deptIdsStr.length()-1);
+       	
+       	//查询所有交换指标
+       	List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(deptIdsStr, entity.getId(), 2);
+       	String changeItemIds = "";
+       	if(changeItemList!=null&&changeItemList.size()>0){
+       		for(ChangeItem changeItem : changeItemList){
+       			changeItemIds += changeItem.getId()+",";
+       		}
+       		changeItemIds = changeItemIds.substring(0, changeItemIds.length()-1);
+       	}
+        //查询所有交换指标对应流程
+       	workFlowDao.findListByItemIdsStr(changeItemIds);
+        //查询所有交换指标对应流程的对应任务
+       	nodeTaskMsgDao.findListByItemIdsStr(changeItemIds);
+       	//先删除所有交换指标对应流程的对应任务
+       	nodeTaskMsgDao.removeAllByByItemIdsStr(changeItemIds);
+        //再删除所有交换指标对应流程
+       	workFlowDao.removeAllByByItemIdsStr(changeItemIds);
+       	//再删除所有交换指标接收条目
+       	changeItemDao.removeAllByIdsStr(changeItemIds);
+      	//再删除所有配置明细
+       	appItemExchangeConfDetailsDao.removeAllByIdsStr(idsStr);
+       	
    		return appItemExchangeConf;
    	}
     
@@ -242,5 +297,15 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
     @Autowired
 	public void setChangeItemDao(ChangeItemDao changeItemDao) {
 		this.changeItemDao = changeItemDao;
+	}
+
+    @Autowired
+	public void setWorkFlowDao(WorkFlowDao workFlowDao) {
+		this.workFlowDao = workFlowDao;
+	}
+
+    @Autowired
+	public void setNodeTaskMsgDao(NodeTaskMsgDao nodeTaskMsgDao) {
+		this.nodeTaskMsgDao = nodeTaskMsgDao;
 	}
 }

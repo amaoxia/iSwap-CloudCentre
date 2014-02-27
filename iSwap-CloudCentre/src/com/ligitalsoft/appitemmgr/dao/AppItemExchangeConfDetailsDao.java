@@ -26,6 +26,11 @@ public class AppItemExchangeConfDetailsDao extends EntityHibernateDao<AppItemExc
 	 public int removeAllByAppItemExchangeConfId(Long appItemExchangeConfId) {
 	        String hql = "delete AppItemExchangeConfDetails e where e.appItemExchangeConf.id=?";
 	        return this.powerHibernateDao.executeUpdate(hql, appItemExchangeConfId);
+	 }
+	 
+	 public int removeAllByIdsStr(String idsStr) {
+	        String hql = "delete AppItemExchangeConfDetails e where e.id in("+idsStr+")";
+	        return this.powerHibernateDao.executeUpdate(hql);
 	    }
 }
 
