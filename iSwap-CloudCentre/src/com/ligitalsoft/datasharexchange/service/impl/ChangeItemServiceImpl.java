@@ -34,6 +34,7 @@ import com.common.framework.exception.ServiceException;
 import com.common.framework.services.impl.BaseSericesImpl;
 import com.common.utils.common.StringConvertion;
 import com.common.utils.common.StringUtils;
+import com.ligitalsoft.cloudnode.service.IWorkFlowService;
 import com.ligitalsoft.datasharexchange.action.Node;
 import com.ligitalsoft.datasharexchange.dao.ChangeItemAppMsgDao;
 import com.ligitalsoft.datasharexchange.dao.ChangeItemCycleDao;
@@ -41,6 +42,7 @@ import com.ligitalsoft.datasharexchange.dao.ChangeItemDao;
 import com.ligitalsoft.datasharexchange.dao.ChangeItemDocumentDao;
 import com.ligitalsoft.datasharexchange.dao.ChangeItemTemplateDao;
 import com.ligitalsoft.datasharexchange.service.IChangeItemService;
+import com.ligitalsoft.datasharexchange.service.ITaskService;
 import com.ligitalsoft.defcat.webservice.CatalogWebService;
 import com.ligitalsoft.defcat.webservice.CatalogWebServicePortClient;
 import com.ligitalsoft.model.appitemmgr.AppMsg;
@@ -77,6 +79,9 @@ public class ChangeItemServiceImpl extends BaseSericesImpl<ChangeItem> implement
     private ISysUserDeptService sysUserDeptService;
 
     private ISysDeptService deptService;
+    
+    private ITaskService taskService;
+    private IWorkFlowService workFlowService;
 
     /*
      * (non-Javadoc)
@@ -449,10 +454,19 @@ public class ChangeItemServiceImpl extends BaseSericesImpl<ChangeItem> implement
         this.deptService = deptService;
     }
 
+	public void setWorkFlowService(IWorkFlowService workFlowService) {
+		this.workFlowService = workFlowService;
+	}
+
 	@Override
 	public ChangeItem findChangeItemById(Long id) {
 		ChangeItem changeItem = changeItemDao.findById(id);
 		return changeItem;
+	}
+
+	@Autowired
+	public void setTaskService(ITaskService taskService) {
+		this.taskService = taskService;
 	}
 
 	@Override
@@ -626,5 +640,32 @@ public class ChangeItemServiceImpl extends BaseSericesImpl<ChangeItem> implement
 		Object object = changeItemDao.findUniqueByHql(hql, changeConfId);
 		if(object!=null)return (ChangeItem)object;
 		return null;
+	}
+
+	//强制删除指标,包括删除所有关联的流程、任务,此删除只能删除接收类型指标
+	@Override
+	public void forcedDelete(Long[] ids, String delType) {
+		//强制删除,将删除所有关联的流程、任务
+		//若是发送指标,则需保证没有对应的接收指标才可删除
+		if(ids==null||ids.length<=0)return;
+		for(Long id : ids){
+			if("1".equals(delType)){//发送指标
+				//查看是否有对应的接收指标
+				if(true){
+					//删除交换规则
+					//删除表结构
+					//删除数据源
+				}else{
+					continue;
+				}
+	        }else {//接收指标
+	        }
+			//删除任务,包括前置机和中心
+		 	//taskService.forcedDeleteByByItemId(id);
+			//删除流程及中心流程,包括mongoDB
+		 	//workFlowService.forcedDeleteByByItemId(id);
+			//删除指标
+		 	changeItemDao.removeById(id);
+		}
 	}
 }

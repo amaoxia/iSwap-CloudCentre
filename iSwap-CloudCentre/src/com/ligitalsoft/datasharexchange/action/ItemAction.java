@@ -98,6 +98,7 @@ public class ItemAction extends FreemarkerBaseAction<ChangeItem> {
     private String itemIds;
     private String categoryIds;
     private List<SysDept> depts = null;// 部门集合对象
+    private String delType;//删除类型
 
     /**
      * 添加视图之前
@@ -314,6 +315,13 @@ public class ItemAction extends FreemarkerBaseAction<ChangeItem> {
     public String delete() {
         try {
             this.onBeforeDelete();
+            /*//强制删除,将删除所有关联的流程、任务
+            //若是发送指标,则需保证没有对应的接收指标才可删除
+            if(delType!=null){
+            	changeItemService.forcedDelete(ids, delType);
+            }else {
+            	this.getEntityService().deleteAllByIds(ids);
+            }*/
             this.getEntityService().deleteAllByIds(ids);
             this.onAfterDelete();
             return "listAction";
@@ -670,6 +678,12 @@ public class ItemAction extends FreemarkerBaseAction<ChangeItem> {
 	}
 	public void setDeptid(String deptid) {
 		this.deptid = deptid;
+	}
+	public String getDelType() {
+		return delType;
+	}
+	public void setDelType(String delType) {
+		this.delType = delType;
 	}
 
 }

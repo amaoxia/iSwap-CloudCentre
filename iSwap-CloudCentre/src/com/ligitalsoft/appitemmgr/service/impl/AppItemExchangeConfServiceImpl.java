@@ -179,7 +179,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
     	entity.setRemark(appItemExchangeConf.getRemark());
        	appItemExchangeConfDao.update(appItemExchangeConf);
        	
-      //如果以前没有共享,则要处理
+        //如果以前没有共享,则要处理
       	if(!entity.getIsShare().equals(appItemExchangeConf.getIsShare())&&appItemExchangeConf.getIsShare().equals(0)){
   			//交换配置-共享
   			ChangeItem shareChangeItem = new ChangeItem();
@@ -189,7 +189,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
           	changeItemDao.save(shareChangeItem);
       	}
        	
-      	//1.分出哪些接收方式新增的和减少的
+      	//分出哪些接收方是新增的和减少的
       	Map<Long, Long> lessIdsMap = new HashMap<Long, Long>();
     	List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = entity.getAppItemExchangeConfDetails();
        	if(appItemExchangeConfDetailsList!=null && appItemExchangeConfDetailsList.size()>0){
@@ -201,8 +201,10 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        	if(appItemExchangeConfDetailsList!=null && appItemExchangeConfDetailsList.size()>0){
        		for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
        			if(lessIdsMap.containsKey(appItemExchangeConfDetails.getReceiveDept().getId())){
+       				//对于减少的接收部门,先过滤出来
        				lessIdsMap.remove(appItemExchangeConfDetails.getReceiveDept().getId());
        			}else{
+       				///对于新增的接收部门,直接添加接收指标
        				appItemExchangeConfDetails.setAppItemExchangeConf(appItemExchangeConf);
            			appItemExchangeConfDetailsDao.save(appItemExchangeConfDetails);
            			
@@ -216,26 +218,49 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        		}
        	}
        	
-       	//处理减少的
+       	//处理减少的接收部门
        	if(lessIdsMap==null||lessIdsMap.size()<=0)return appItemExchangeConf;
        	String idsStr = "";
+       	List<Long> idsArray = new ArrayList<Long>();
        	String deptIdsStr = "";
        	for(Map.Entry<Long, Long> entry : lessIdsMap.entrySet()){
-       		idsStr += entry.getValue()+",";
        		deptIdsStr += entry.getKey()+",";
+       		idsStr += entry.getValue()+",";
+       		idsArray.add(entry.getValue());
        	}
        	idsStr = idsStr.substring(0,idsStr.length()-1);
        	deptIdsStr = deptIdsStr.substring(0,deptIdsStr.length()-1);
        	
-       	//查询所有交换指标
+       /*	//根据接收部门id及交换配置主id查询所有交换指标
        	List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(deptIdsStr, entity.getId(), 2);
        	String changeItemIds = "";
+       	List<Long> itemIdsArray = new ArrayList<Long>();
        	if(changeItemList!=null&&changeItemList.size()>0){
        		for(ChangeItem changeItem : changeItemList){
        			changeItemIds += changeItem.getId()+",";
+       			itemIdsArray.add(changeItem.getId());
        		}
        		changeItemIds = changeItemIds.substring(0, changeItemIds.length()-1);
+       	}*/
+       	//删除对应指标,若该指标没有流程或任务
+       	String detailIds = "";
+       	for(Long detailsId : idsArray){
+       		List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(detailsId+"", entity.getId(), 2);
+       		if(changeItemList!=null&&changeItemList.size()>0){
+       			try{
+       				changeItemDao.removeById(changeItemList.get(0));
+       				detailIds += detailsId+",";
+       			}catch(Exception e){
+       				logger.error("对应指标下有关联流程,不能强制删除,指标id:"+changeItemList.get(0).getId(), e);
+       			}
+       		}
        	}
+       	if(detailIds.length()>0){
+       		detailIds = detailIds.substring(0,detailIds.length()-1);
+       		appItemExchangeConfDetailsDao.removeAllByIdsStr(detailIds);
+       	}
+       /* *
+        changeItemService.forcedDelete
         //查询所有交换指标对应流程
        	workFlowDao.findListByItemIdsStr(changeItemIds);
         //查询所有交换指标对应流程的对应任务
@@ -246,8 +271,8 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        	workFlowDao.removeAllByByItemIdsStr(changeItemIds);
        	//再删除所有交换指标接收条目
        	changeItemDao.removeAllByIdsStr(changeItemIds);
-      	//再删除所有配置明细
-       	appItemExchangeConfDetailsDao.removeAllByIdsStr(idsStr);
+      	//再删除所有交换配置明细
+       	appItemExchangeConfDetailsDao.removeAllByIdsStr(idsStr);*/
        	
    		return appItemExchangeConf;
    	}

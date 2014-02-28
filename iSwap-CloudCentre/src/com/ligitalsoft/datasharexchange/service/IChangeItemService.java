@@ -96,4 +96,6 @@ public interface IChangeItemService extends IBaseServices<ChangeItem> {
     public JSONArray getAppItemTreeByDeptId4Center();
     
     public ChangeItem findSendChangeItemByChangeConfId(Integer itemType, Integer dataType, Long changeConfId);
+
+    public void forcedDelete(Long[] ids, String delType);
 }
