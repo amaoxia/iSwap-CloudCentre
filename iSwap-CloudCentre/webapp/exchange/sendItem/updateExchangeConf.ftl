@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="${path}/js/liger/lib/ligerUI/js/plugins/ligerComboBox.js"></script> 
 </head>
 <body class="pm01_c">
-	<form method="post" action="${path}/appitemmgr/appItemExchangeConf/appItemExchangeConf!update.action" id="saveForm">
+	<form method="post" action="${path}/exchange/sendItem/sendItem!updateExchangeConf.action" id="saveForm">
    	<input type="hidden" name="appItemExchangeConf.id" value="${id?default('')}"/>
    	<input type="hidden" name="appItemExchangeConf.appMsg.id" value="${appMsg.id}"/>
    	<input type="hidden" name="appItemExchangeConf.appItem.id" value="${appItem.id}"/>

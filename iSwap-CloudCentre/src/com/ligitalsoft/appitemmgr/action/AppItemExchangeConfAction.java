@@ -54,6 +54,11 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 		return StrutsAction.RELOAD;
 	}
 	
+	public String addAppItemExchangeConf() {
+		appItemExchangeConfService.addEntity(appItemExchangeConf);
+		return StrutsAction.RELOAD;
+	}
+	
 	@Override
 	public String update() {
 		try{
@@ -69,7 +74,7 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 	@Override
 	public String delete() {
 		try{
-			appItemExchangeConfService.deleteEntityById(appItemExchangeConf.getId());
+			appItemExchangeConfService.deleteEntityById(ids[0]);
 			return "listAction";
 		}catch(Exception e){
 			log.error("AppItemExchangeConfService invoke delete exception ", e);

@@ -177,7 +177,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
     	AppItemExchangeConf entity = this.findById(appItemExchangeConf.getId());
     	entity.setIsShare(appItemExchangeConf.getIsShare());
     	entity.setRemark(appItemExchangeConf.getRemark());
-       	appItemExchangeConfDao.update(appItemExchangeConf);
+       	
        	
         //如果以前没有共享,则要处理
       	if(!entity.getIsShare().equals(appItemExchangeConf.getIsShare())&&appItemExchangeConf.getIsShare().equals(0)){
@@ -248,7 +248,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        		List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(detailsId+"", entity.getId(), 2);
        		if(changeItemList!=null&&changeItemList.size()>0){
        			try{
-       				changeItemDao.removeById(changeItemList.get(0));
+       				changeItemDao.remove(changeItemList.get(0));
        				detailIds += detailsId+",";
        			}catch(Exception e){
        				logger.error("对应指标下有关联流程,不能强制删除,指标id:"+changeItemList.get(0).getId(), e);
@@ -273,6 +273,8 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        	changeItemDao.removeAllByIdsStr(changeItemIds);
       	//再删除所有交换配置明细
        	appItemExchangeConfDetailsDao.removeAllByIdsStr(idsStr);*/
+       	
+       	appItemExchangeConfDao.update(appItemExchangeConf);
        	
    		return appItemExchangeConf;
    	}

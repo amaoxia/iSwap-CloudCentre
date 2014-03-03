@@ -16,6 +16,7 @@
 			      	<img src="${path}/images/title/item.png"  align="absmiddle" />
 			      		发送指标项
 			      </div>
+			      <div class="c_m_btn"> <span class="cm_btn_m"><a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!addExchangeConfView.action?deptId=${deptId}&deptName=${deptName}','新建发送指标','660','540')"><b><img src="${path}/images/cmb_xj.gif" class="cmb_img" />新建发送指标<a href="javascript:void(0)"><img src="${path}/images/bullet_add.png" class="bullet_add" /></a></b></a></span><span class="cm_btn_m">&nbsp;</span></div>
 			    </div>
 		    	<div class="main_c">
 		           <table class="main_drop">
@@ -32,12 +33,13 @@
 			          <th width="5%">序号</th>
 			          <th width="5%">应用</th>
 			          <th width="5%">指标名称</th>
+			          <th width="15%">接收部门</th>
 			          <th width="5%">交换类型</th>
 			          <th width="5%">数据源类型</th>
 			          <th width="10%">关联数据源</th>
 			          <th width="5%">关联信息</th>
 					  <th width="10%">创建时间<a href="javascript:void(0)" onclick="setOrder(this)" name="e.createDate"><img src="${path}/images/tabs_arr.png" align="absmiddle" /></a></th>
-					  <th width="30%">操作</th>
+					  <th width="20%">操作</th>
 			        </tr>
 			       <#list listDatas as entity>
 					<tr <#if (entity_index+1)%2==0>class="trbg"</#if> onclick="selectedTD(this);">
@@ -53,23 +55,35 @@
 							</#if> 
 						</#if>
 			          </td>
+			          <td width="15%">
+			          	<#list entity.appItemExchangeConf.appItemExchangeConfDetails as appItemExchangeConfDetail>
+			          		${appItemExchangeConfDetail.receiveDept.deptName},
+			            </#list>
+			          </td>
 			          <td width="5%">${entity.dataTypeStr?default('')}</td>
 			          <td width="5%">${entity.dsTypeStr?default('')}</td>
 			          <td width="10%"><#if entity.datSource?exists>${entity.datSource.sourceName?default('无')}</#if></td>
 			          <td width="5%">${entity.tableName?default('')}</td>
 					  <td width="10%">${entity.createDate?date?default('')}</td>
-			          <td width="30%">
+			          <td width="20%">
 				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/item/item!view.action?id=${entity.id}','查看','570','460');" class="tabs1_cz">
 				          	<img src="${path}/images/small9/s_chakan.gif" />查看
 				          </a> 
 				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!updateView.action?id=${entity.id}','编辑','630','590');" class="tabs1_cz">
 				          	<img src="${path}/images/czimg_edit.gif" />配置
 				          </a> 
+				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!updateExchangeConfView.action?id=${entity.appItemExchangeConf.id}','修改发送指标','630','590');" class="tabs1_cz">
+				          	<img src="${path}/images/czimg_edit.gif" />修改
+				          </a>
+				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!deleteExchangeConf.action?id=${entity.appItemExchangeConf.id}','修改发送指标','630','590');" class="tabs1_cz">
+				          	<img src="${path}/images/czimg_edit.gif" />删除
+				          </a>
 				          <#if entity.dataType?exists>
 				           <a href="#"  <#if entity.dataType=='1'> onclick="opdg('${path}/exchange/tabledesc/tabledesc!addDesc.action?itemId=${entity.id}','表结构','1000','470');"<#else>style="color:#ccc;"</#if> class="tabs1_cz" >
 				          	<img src="${path}/images/small9/s_biaojiegou.gif"/>表结构
 				           </a>
 				          </#if>
+				          
 				          <#-- 
 				          <a href="#" id="hz0"  class="tabs1_cz" onclick="del('${path}/exchange/sendItem/sendItem!delete.action?ids=${entity.id}')">
 				           <img src="${path}/images/small9/czimg_sc.gif" />清除配置

@@ -127,8 +127,8 @@ public class ChangeItemDao extends EntityHibernateDao<ChangeItem> {
 	}
 	
 	public  List<ChangeItem> findListByExchangeConfAndDeptIdStr(String deptIdsStr, Long appItemExchangeConfId, Integer itemType){
-		String hql="from ChangeItem e where ee.appItemExchangeConf.id in("+deptIdsStr+") and e.itemType=? and e.appItemExchangeConf.id=? ";
-		return super.findListByHql(hql, appItemExchangeConfId, itemType);
+		String hql="from ChangeItem e where e.sysDept.id in("+deptIdsStr+") and e.itemType=? and e.appItemExchangeConf.id=? ";
+		return super.findListByHql(hql, itemType, appItemExchangeConfId);
 	}
 	
 	public int removeAllByAppItemExchangeConfId(Long appItemExchangeConfId){

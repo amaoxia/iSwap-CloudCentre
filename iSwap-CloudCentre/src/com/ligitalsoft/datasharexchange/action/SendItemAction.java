@@ -1,8 +1,5 @@
 package com.ligitalsoft.datasharexchange.action;
 
-import java.util.Date;
-import java.util.List;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -180,6 +177,46 @@ public class SendItemAction extends FreemarkerBaseAction<ChangeItem> {
             cycle.setRuleYellowNotify(yellowNotify + "," + yellowNotifyDay);
             cycle.setRuleRedNotify(redNotify + "," + redNotifyDay);
         }
+    }
+    
+    public String addExchangeConfView() {
+    	return "addExchangeConf";
+    }
+    
+    public String addExchangeConf() {
+    	try {
+			this.getHttpServletRequest().getRequestDispatcher("/appitemmgr/appItemExchangeConf/appItemExchangeConf!addAppItemExchangeConf.action").forward(this.getHttpServletRequest(), this.getHttpServletResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	return StrutsAction.RELOAD;
+    }
+    
+    public String updateExchangeConfView() {
+    	try {
+			this.getHttpServletRequest().getRequestDispatcher("/appitemmgr/appItemExchangeConf/appItemExchangeConf!updateView.action").forward(this.getHttpServletRequest(), this.getHttpServletResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	return "updateExchangeConf";
+    }
+    
+    public String updateExchangeConf() {
+    	try {
+			this.getHttpServletRequest().getRequestDispatcher("/appitemmgr/appItemExchangeConf/appItemExchangeConf!update.action").forward(this.getHttpServletRequest(), this.getHttpServletResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	return StrutsAction.RELOAD;
+    }
+    
+    public String deleteExchangeConf() {
+    	try {
+			this.getHttpServletRequest().getRequestDispatcher("/appitemmgr/appItemExchangeConf/appItemExchangeConf!delete.action").forward(this.getHttpServletRequest(), this.getHttpServletResponse());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+    	return StrutsAction.RELOAD;
     }
     
 	@Override
