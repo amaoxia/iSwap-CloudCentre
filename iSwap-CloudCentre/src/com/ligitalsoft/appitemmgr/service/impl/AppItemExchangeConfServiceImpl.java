@@ -194,7 +194,7 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
     	List<AppItemExchangeConfDetails> appItemExchangeConfDetailsList = entity.getAppItemExchangeConfDetails();
        	if(appItemExchangeConfDetailsList!=null && appItemExchangeConfDetailsList.size()>0){
        		for(AppItemExchangeConfDetails appItemExchangeConfDetails : appItemExchangeConfDetailsList){
-       			lessIdsMap.put(appItemExchangeConfDetails.getReceiveDept().getId(), appItemExchangeConfDetails.getReceiveDept().getId());
+       			lessIdsMap.put(appItemExchangeConfDetails.getReceiveDept().getId(), appItemExchangeConfDetails.getId());
        		}
        	}
     	appItemExchangeConfDetailsList = appItemExchangeConf.getAppItemExchangeConfDetails();
@@ -221,12 +221,12 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        	//处理减少的接收部门
        	if(lessIdsMap==null||lessIdsMap.size()<=0)return appItemExchangeConf;
        	String idsStr = "";
-       	List<Long> idsArray = new ArrayList<Long>();
+       	List<Long> deptIdsArray = new ArrayList<Long>();
        	String deptIdsStr = "";
        	for(Map.Entry<Long, Long> entry : lessIdsMap.entrySet()){
        		deptIdsStr += entry.getKey()+",";
        		idsStr += entry.getValue()+",";
-       		idsArray.add(entry.getValue());
+       		deptIdsArray.add(entry.getKey());
        	}
        	idsStr = idsStr.substring(0,idsStr.length()-1);
        	deptIdsStr = deptIdsStr.substring(0,deptIdsStr.length()-1);
@@ -243,21 +243,18 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
        		changeItemIds = changeItemIds.substring(0, changeItemIds.length()-1);
        	}*/
        	//删除对应指标,若该指标没有流程或任务
-       	String detailIds = "";
-       	for(Long detailsId : idsArray){
-       		List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(detailsId+"", entity.getId(), 2);
+       	for(Long deptId : deptIdsArray){
+       		List<ChangeItem> changeItemList = changeItemDao.findListByExchangeConfAndDeptIdStr(deptId+"", entity.getId(), 2);
        		if(changeItemList!=null&&changeItemList.size()>0){
        			try{
        				changeItemDao.remove(changeItemList.get(0));
-       				detailIds += detailsId+",";
        			}catch(Exception e){
        				logger.error("对应指标下有关联流程,不能强制删除,指标id:"+changeItemList.get(0).getId(), e);
        			}
        		}
        	}
-       	if(detailIds.length()>0){
-       		detailIds = detailIds.substring(0,detailIds.length()-1);
-       		appItemExchangeConfDetailsDao.removeAllByIdsStr(detailIds);
+       	if(idsStr.length()>0){
+       		appItemExchangeConfDetailsDao.removeAllByIdsStr(idsStr);
        	}
        /* *
         changeItemService.forcedDelete
@@ -288,6 +285,14 @@ public class AppItemExchangeConfServiceImpl extends BaseSericesImpl<AppItemExcha
 		appItemExchangeConfDetailsDao.removeAllByAppItemExchangeConfId(appItemExchangeConfId);
 		//删除指标配置
 		appItemExchangeConfDao.remove(entity);
+	}
+	
+	@Override
+	public void deleteEntityByIds(Long[] appItemExchangeConfIdsArray) throws ServiceException {
+		if(appItemExchangeConfIdsArray==null||appItemExchangeConfIdsArray.length<=0)return;
+		for(Long appItemExchangeConfId : appItemExchangeConfIdsArray){
+			deleteEntityById(appItemExchangeConfId);
+		}
 	}
     
 	@Override

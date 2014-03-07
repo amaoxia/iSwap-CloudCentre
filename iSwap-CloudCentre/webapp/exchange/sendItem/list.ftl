@@ -69,15 +69,15 @@
 				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/item/item!view.action?id=${entity.id}','查看','570','460');" class="tabs1_cz">
 				          	<img src="${path}/images/small9/s_chakan.gif" />查看
 				          </a> 
-				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!updateView.action?id=${entity.id}','编辑','630','590');" class="tabs1_cz">
-				          	<img src="${path}/images/czimg_edit.gif" />配置
-				          </a> 
 				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!updateExchangeConfView.action?id=${entity.appItemExchangeConf.id}','修改发送指标','630','590');" class="tabs1_cz">
 				          	<img src="${path}/images/czimg_edit.gif" />修改
 				          </a>
-				          <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!deleteExchangeConf.action?id=${entity.appItemExchangeConf.id}','修改发送指标','630','590');" class="tabs1_cz">
+				          <a href="javascript:void(0)" id="hz0" onclick="del('${path}/exchange/sendItem/sendItem!deleteExchangeConf.action?ids=${entity.appItemExchangeConf.id}');return false;" class="tabs1_cz">
 				          	<img src="${path}/images/czimg_edit.gif" />删除
 				          </a>
+				           <a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/exchange/sendItem/sendItem!updateView.action?id=${entity.id}','编辑','630','590');" class="tabs1_cz">
+				          	<img src="${path}/images/czimg_edit.gif" />配置
+				          </a> 
 				          <#if entity.dataType?exists>
 				           <a href="#"  <#if entity.dataType=='1'> onclick="opdg('${path}/exchange/tabledesc/tabledesc!addDesc.action?itemId=${entity.id}','表结构','1000','470');"<#else>style="color:#ccc;"</#if> class="tabs1_cz" >
 				          	<img src="${path}/images/small9/s_biaojiegou.gif"/>表结构

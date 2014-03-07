@@ -74,7 +74,7 @@ public class AppItemExchangeConfAction extends FreemarkerBaseAction<AppItemExcha
 	@Override
 	public String delete() {
 		try{
-			appItemExchangeConfService.deleteEntityById(ids[0]);
+			appItemExchangeConfService.deleteEntityByIds(ids);
 			return "listAction";
 		}catch(Exception e){
 			log.error("AppItemExchangeConfService invoke delete exception ", e);

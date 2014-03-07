@@ -35,6 +35,8 @@ public interface AppItemExchangeConfService extends IBaseServices<AppItemExchang
 	
 	public AppItemExchangeConf findAppItemExchangeConfBySendDept(Long appMsgId, Long AppItemId, String[] sendDeptIds);
 
-	public void deleteEntityById(Long appItemExchangeConfId) throws ServiceException ;
+	public void deleteEntityById(Long appItemExchangeConfId) throws ServiceException;
+	
+	public void deleteEntityByIds(Long[] appItemExchangeConfIdsArray) throws ServiceException;
 }
 

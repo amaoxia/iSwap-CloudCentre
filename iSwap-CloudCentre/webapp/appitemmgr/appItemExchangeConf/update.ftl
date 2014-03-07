@@ -148,7 +148,7 @@
 	        selectBoxHeight: 300,
 	        textField:'name', valueField: 'id',treeLeafOnly:true,
 	        onSelected:onSelectedReceiveDept,
-	        tree: { url: "${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action?appMsgId=${appMsg.id}&appItemId=${appItem.id}", checkbox: true,
+	        tree: { url: "${path}/ajax/ajax!getDeptTree4AppItemExchangeConf.action?appMsgId=${appMsg.id}&appItemId=${appItem.id}&sendDeptIds=${sendDept.id}", checkbox: true,
 	                textFieldName:"name",
 	                idFieldName:"id",
 	                parentIDFieldName:"pid",
