@@ -45,7 +45,6 @@ import com.common.utils.web.struts2.Struts2Utils;
 import com.ligitalsoft.appitemmgr.service.AppMsgService;
 import com.ligitalsoft.cloudcenter.service.CloudNodeInfoService;
 import com.ligitalsoft.model.appitemmgr.AppMsg;
-import com.ligitalsoft.model.cloudcenter.AppCloudNode;
 import com.ligitalsoft.model.cloudcenter.CloudNodeInfo;
 import com.ligitalsoft.model.cloudcenter.CouldNodeDept;
 import com.ligitalsoft.model.system.SysDept;
@@ -282,6 +281,8 @@ public class CloudNodeInfoAction extends FreemarkerBaseAction<CloudNodeInfo> {
 
 	public String add() {
 		super.add();
+		entityobj.setCode(entityobj.getId()+"");
+		super.update();
 		return "refresh";
 	}
 

@@ -29,24 +29,24 @@
 								  </span>
 								  <span><div id='nodesNameTip'></div></span>
 								  </li>
-								  <li class="item2_bg">
+								  <li class="item2_bg" style="display:none;">
 								  <p>前置机编码：</p>
 								  <span><input type="text" name="code" id="code" size="30" value="${code?default('')}"/></span>
 								  <span><div id='codeTip'></div></span>
 								</li>
-								<li class="">
+								<li class="item2_bg">
 								  <p>IP地址：</p>
 								  <span><input type="text" name="address" id="address" value="${address?default('')}" size="30"/></span>
 								  <span><div id='addressTip'></div></span>
 								</li>
-								<li class="item2_bg">
+								<li >
 								  <p>访问端口：</p>
 								  <span>
 								  <input type="text" name="port" id="port" size="30"  value="${port?default('')}"/>
 								  </span>
 								  <span><div id='portTip'></div></span>
 								</li>
-								<li class="">
+								<li class="item2_bg">
 								  <p>所属部门：</p>
 								 <span>
 								  <textarea  name="deptNames" id="deptNames" cols="42" rows="3" readOnly=true >${sysDeptNames?default('')}</textarea>
@@ -54,7 +54,8 @@
 								 </span>
 								 <span><div id='deptNamesTip'></div></span>
 								</li>
-								<li class="item2_bg">
+								<#-- 
+								<li>
 								  <p>所属应用：</p>
 								  <span>
 								   <select name="appMsgIds" id="appMsgIds" multiple style="width:280px;">
@@ -65,7 +66,8 @@
 								  </span>
 								  <span><div id='appMsgIdsTip'></div></span>
 								</li>	
-								<li class="">
+								-->
+								<li class="item2_bg">
 								  <p>描述</p>
 								  <span>
 								  <textarea  name="remark" id="remark" cols="42" rows="3">${remark?default("")}</textarea>

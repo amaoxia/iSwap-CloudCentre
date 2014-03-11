@@ -139,12 +139,14 @@
 						<#if entity.status=='0'>
 						<a id="hz4" href="javascript:deploy('${entity.id}');" class="tabs1_cz" ><img src="${path}/images/small9/s_quxiaobushu.gif" />部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;署</a>
 						</#if> 
+						<#-- 
 			          	<#if entity.status=='1'>
 			          		<a id="hz5" href="#" class="tabs1_cz" ><img src="${path}/images/small9/down.gif" />导出 </a>
 			          	</#if> 
 						<#if entity.status=='0'>
 			          		<a id="hz5" href="#" class="tabs1_cz" ><img src="${path}/images/small9/down.gif" />导出</a>
 			          	</#if> 
+			          	-->
 			          	<#if entity.status=='1'>
 			          		<a href="javascript:opdg('${path}/iswapesb/workflow/esbworkflowAction!testView.action?esbWorkFlow.id=${entity.id}','测试流程',650,510)" class="tabs1_cz"><img src="${path}/images/czimg_edit.gif" />测&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;试</a>
 			          	</#if> 

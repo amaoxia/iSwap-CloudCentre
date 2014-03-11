@@ -12,8 +12,8 @@
 	</head>
 	<body >
 		    <div class="common_menu">
-		      <div class="c_m_title"><img src="${path}/images/title/img_05.png"  align="absmiddle" />JMS服务接入管理</div>
-		      <div class="c_m_btn"> <span class="cm_btn_m"><a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/iswapmq/external/jms/jmsInfoAction!addView.action','接入服务',675,430);"><b><img src="${path}/images/cmb_xj.gif" class="cmb_img" />新建队列<a href="javascript:void(0)"><img src="${path}/images/bullet_add.png" class="bullet_add" /></a></b></a></span><span class="cm_btn_m">&nbsp;</span></div>
+		      <div class="c_m_title"><img src="${path}/images/title/img_05.png"  align="absmiddle" />MQ服务接入管理</div>
+		      <div class="c_m_btn"> <span class="cm_btn_m"><a href="javascript:void(0)" id="hz0" onclick="opdg('${path}/iswapmq/external/jms/jmsInfoAction!addView.action','接入服务',675,430);"><b><img src="${path}/images/cmb_xj.gif" class="cmb_img" />新建服务<a href="javascript:void(0)"><img src="${path}/images/bullet_add.png" class="bullet_add" /></a></b></a></span><span class="cm_btn_m">&nbsp;</span></div>
 		    </div>
 		    <div class="main_c">
 		     <form name="pageForm" id="pageForm" action="jmsInfoAction!list.action" method="post">

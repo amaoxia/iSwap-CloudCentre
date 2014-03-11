@@ -33,24 +33,26 @@
 										  </span>
 										  <span><div id='nodesNameTip'></div></span>
 										  </li>
+										  <!-- 
 										  <li class="item2_bg">
 										  <p>前置机编码：</p>
 										  <span><input type="text" name="code" id="code" size="30"/></span>
 										  <span><div id='codeTip'></div></span>
 										</li>
-										<li class="">
+										-->
+										<li class="item2_bg">
 										  <p>IP地址：</p>
 										  <span><input type="text" name="address" id="address" size="30"/></span>
 										  <span><div id='addressTip'></div></span>
 										</li>
-										<li class="item2_bg">
+										<li >
 										  <p>访问端口：</p>
 										  <span>
 										  <input type="text" name="port" id="port"  size="30" value="5678"/>
 										  </span>
 										  <span><div id='portTip'></div></span>
 										</li>
-										<li>
+										<li class="item2_bg">
 										  <p>所属部门：</p>
 										 <span>
 										 <textarea  name="deptNames" cols="42" rows="3" readOnly=true id="deptNames"></textarea>

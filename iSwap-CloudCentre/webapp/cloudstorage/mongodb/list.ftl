@@ -11,8 +11,8 @@
 	</head>
 	<body>
 		    <div class="common_menu">
-		      <div class="c_m_title"><img src="${path}/images/title/img_05.png"  align="absmiddle" />数据源注册</div>
-			  <div class="c_m_btn"> <span class="cm_btn_m"><a href="javascript:void(0)" id="hz1" onclick="opdg('${path}/cloudstorage/mongodb/mongodb!addView.action','注册数据源','650','550');"><b><img src="${path}/images/cmb_xj.gif" class="cmb_img" />注册数据源<a href="javascript:void(0)"><img src="${path}/images/bullet_add.png" class="bullet_add" /></a></b></a></span><span class="cm_btn_m">&nbsp;</span></div>
+		      <div class="c_m_title"><img src="${path}/images/title/img_05.png"  align="absmiddle" />mongoDB数据源管理</div>
+			  <div class="c_m_btn"> <span class="cm_btn_m"><a href="javascript:void(0)" id="hz1" onclick="opdg('${path}/cloudstorage/mongodb/mongodb!addView.action','注册mongoDB数据源','650','550');"><b><img src="${path}/images/cmb_xj.gif" class="cmb_img" />注册mongoDB数据源<a href="javascript:void(0)"><img src="${path}/images/bullet_add.png" class="bullet_add" /></a></b></a></span><span class="cm_btn_m">&nbsp;</span></div>
 		    </div>
 		    <div class="main_c">
 			    <form name="pageForm" action="${path}/cloudstorage/mongodb/mongodb!list.action" method="post">

@@ -178,7 +178,7 @@ public class EsbWorkFlowAction  extends FreemarkerBaseAction<EsbWorkFlow> {
 //			this.entityobj = esbWorkFlow;
 			super.add();
 			entityobj.setWorkFlowCode(entityobj.getId()+"");
-			this.update();
+			esbWorkFlowService.update(entityobj);;
 		 } catch (Exception e) {
 				e.printStackTrace();
 		 }

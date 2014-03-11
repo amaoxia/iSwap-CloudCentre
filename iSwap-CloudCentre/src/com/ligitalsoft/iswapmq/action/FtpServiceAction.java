@@ -19,7 +19,6 @@ import com.common.framework.view.StrutsAction;
 import com.common.utils.common.StringUtils;
 import com.common.utils.web.struts2.Struts2Utils;
 import com.ligitalsoft.iswapmq.service.IFtpService;
-import com.ligitalsoft.model.cloudnode.FtpListen;
 import com.ligitalsoft.model.serverinput.FtpServerInfo;
 import com.ligitalsoft.model.system.SysDept;
 import com.ligitalsoft.sysmanager.service.ISysDeptService;

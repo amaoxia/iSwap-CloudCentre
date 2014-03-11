@@ -37,7 +37,7 @@
 							        	var itemType = paramArray.length>2?paramArray[2]:"";
 						        	}
 						        	$('#content').attr("src","${path}/iswapesb/esbtask/esbTaskAction!list.action?changeItemId="+node.data.uri+"&appMsgId="+appId+"&itemId="+itemId+"&itemType="+itemType);
-				                }});
+				                }};
 			//根据条件过滤数据
 	        function appItemGrep(){
 	        	var searchText = $('#searchText').val();
@@ -135,7 +135,7 @@
 		    <div class="common_menu">
 			      <div class="c_m_title">
 			      	<img src="${path}/images/title/img_05.png"  align="absmiddle" />
-			     	 流程定制
+			     	 任务定制
 			      </div>
 		     </div>
 		     <div id="container">
