@@ -59,7 +59,7 @@
 			          <#if entity.status=='0'> onclick="opdg('${path}/cloudnode/ftplisten/ftplisten!updateView.action?deptId=${deptId?default('')}&id=${entity.id}','编辑FTP数据源信息','520','480');" </#if> 
 			          class="tabs1_cz"><img src="${path}/images/czimg_edit.gif" />编辑</a>&nbsp;<a href="javascript:void(0);" onclick="opdg('${path}/cloudnode/ftplisten/ftplisten!view.action?id=${entity.id}','FTP数据源信息查看','450','280');" class="tabs1_cz">
 			          <img src="${path}/images/small9/s_chakan.gif"/>查看</a>&nbsp;
-			          <#if entity.status=='0'><a href="javascript:void(0);"  onclick="updateStatus('${path}/cloudnode/ftplisten/ftplisten!updateStatus.action?status=1&ids=${entity.id}');" class="tabs1_cz" ><img src="${path}/images/small9/jihuo.gif" />启动</a></#if><#if entity.status=='1'><a href="javascript:void(0);"  onclick="updateStatus('${path}/cloudnode/ftplisten/ftplisten!updateStatus.action?status=0&ids=${entity.id}');" class="tabs1_cz" ><img src="${path}/images/small9/dongjie.gif" />禁用</a></#if>
+			          <#if entity.status=='0'><a href="javascript:void(0);"  onclick="updateStatus('${path}/cloudnode/ftplisten/ftplisten!updateStatus.action?status=1&ids=${entity.id}');" class="tabs1_cz" ><img src="${path}/images/small9/jihuo.gif" />启用</a></#if><#if entity.status=='1'><a href="javascript:void(0);"  onclick="updateStatus('${path}/cloudnode/ftplisten/ftplisten!updateStatus.action?status=0&ids=${entity.id}');" class="tabs1_cz" ><img src="${path}/images/small9/dongjie.gif" />禁用</a></#if>
 			          </td>
 			        </tr>
 					</#list>
