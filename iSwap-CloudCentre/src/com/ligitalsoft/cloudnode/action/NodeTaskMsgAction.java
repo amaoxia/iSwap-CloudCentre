@@ -1,7 +1,6 @@
 package com.ligitalsoft.cloudnode.action;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONArray;
@@ -22,7 +21,6 @@ import com.common.framework.view.StrutsAction;
 import com.common.jobtool.ELTool;
 import com.common.utils.common.StringUtils;
 import com.common.utils.date.DateUtil;
-import com.common.utils.json.JsonHelper;
 import com.common.utils.web.struts2.Struts2Utils;
 import com.ligitalsoft.cloudnode.service.INodeTaskMsgService;
 import com.ligitalsoft.cloudnode.service.IWorkFlowService;

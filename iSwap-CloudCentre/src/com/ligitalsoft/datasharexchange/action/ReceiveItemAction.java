@@ -13,7 +13,6 @@ import com.common.framework.dao.SortPara;
 import com.common.framework.services.IBaseServices;
 import com.common.framework.view.FreemarkerBaseAction;
 import com.common.framework.view.StrutsAction;
-import com.common.utils.common.StringUtils;
 import com.ligitalsoft.datasharexchange.service.IChangeItemService;
 import com.ligitalsoft.model.changemanage.ChangeItem;
 

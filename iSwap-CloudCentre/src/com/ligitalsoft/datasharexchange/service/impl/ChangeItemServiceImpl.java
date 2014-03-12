@@ -635,7 +635,7 @@ public class ChangeItemServiceImpl extends BaseSericesImpl<ChangeItem> implement
 	public ChangeItem findSendChangeItemByChangeConfId(Integer itemType, Integer dataType, Long changeConfId) {
 		String hql = "from ChangeItem e where ";
 		if(itemType!=null)hql+=" e.itemType="+itemType;
-		if(dataType!=null)hql+=" ande.dataType="+dataType;
+		if(dataType!=null)hql+=" and e.dataType="+dataType;
 		hql+=" and e.appItemExchangeConf.id=?";
 		Object object = changeItemDao.findUniqueByHql(hql, changeConfId);
 		if(object!=null)return (ChangeItem)object;
